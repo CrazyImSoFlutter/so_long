@@ -6,14 +6,16 @@
 /*   By: nogeun <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/16 21:57:17 by nogeun            #+#    #+#             */
-/*   Updated: 2021/07/16 22:00:42 by nogeun           ###   ########.fr       */
+/*   Updated: 2021/07/16 22:56:01 by nogeun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
+# include <stdio.h>
 # include <stdlib.h>
+# include "gnl/gnl.h"
 # include "mlx/mlx.h"
 
 #endif
