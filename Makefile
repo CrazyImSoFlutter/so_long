@@ -10,10 +10,13 @@ LXFLAGS = -Lmlx -lmlx -framework OpenGL -framework Appkit
 
 HEADER = cub3d.h
 
-SRCS = file/so_long.c\
+SRCS = gnl/get_next_line.c\
+	   gnl/get_next_line_utils.c\
+	   file/so_long.c\
 	   file/parse.c\
+	   file/tools.c\
 
-OBJS = $(SRCS: .c=.o)
+OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
 
