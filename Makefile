@@ -15,6 +15,7 @@ SRCS = gnl/get_next_line.c\
 	   file/so_long.c\
 	   file/parse.c\
 	   file/tools.c\
+	   file/tex_setting.c\
 
 OBJS = $(SRCS:.c=.o)
 
