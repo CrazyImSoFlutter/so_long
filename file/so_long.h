@@ -6,7 +6,7 @@
 /*   By: nogeun <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 23:24:35 by nogeun            #+#    #+#             */
-/*   Updated: 2021/10/10 21:02:30 by nogeun           ###   ########.fr       */
+/*   Updated: 2021/10/11 18:12:36 by nogeun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,18 @@ typedef struct		s_map {
 }					t_map;
 
 typedef struct		s_tex {
-	int				*player[4];
-	int				*enemy[4];
+	int				*player_left[4];
+	int				*player_right[4];
+	int				*enemy_left[4];
+	int				*enemy_right[4];
 	int				*sand;
 	int				*wall;
 }					t_tex;
+
+typedef struct		s_player {
+	int				pos_y;
+	int				pos_x;
+}					t_player;
 
 typedef struct		s_err {
 	int				n;
@@ -68,6 +75,7 @@ typedef struct		s_all {
 	t_img			img;
 	t_map			map;
 	t_tex			tex;
+	t_player		player;
 	t_err			err;
 }					t_all;
 
@@ -93,5 +101,6 @@ int				tool_strlen(char* line);
 /*about draw*/
 void			draw_put_image(t_all *s, void *img_ptr, int x, int y);
 void			draw(t_all *s);
+void			test_draw(t_all *s);
 
 #endif

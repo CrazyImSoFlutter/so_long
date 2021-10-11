@@ -6,7 +6,7 @@
 /*   By: nogeun <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 23:47:03 by nogeun            #+#    #+#             */
-/*   Updated: 2021/10/10 02:02:26 by nogeun           ###   ########.fr       */
+/*   Updated: 2021/10/11 18:27:28 by nogeun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	init_variables(t_all *s)
 	s->map.x = 0;
 	s->map.y = 0;
 	s->map.map = NULL;
+	s->player.pos_y = 0;
+	s->player.pos_x = 0;
 }
 
 void	init_screen(t_all *s, char **argv)
@@ -46,8 +48,15 @@ void	init_screen(t_all *s, char **argv)
 	tex_input(s);
 }
 
+int		main_loop(t_all *s)
+{
+	test_draw(s);
+	return 0;
+}
+
 void	init_loop(t_all *s)
 {
+	mlx_loop_hook(s->mlx.ptr, &main_loop, s);
 	mlx_loop(s->mlx.ptr);
 }
 
@@ -55,6 +64,5 @@ void	init_so_long(t_all *s, char **argv)
 {
 	init_variables(s);
 	init_screen(s, argv);
-	draw(s);
 	init_loop(s);
 }
