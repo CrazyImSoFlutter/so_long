@@ -17,7 +17,10 @@ SRCS = gnl/get_next_line.c\
 	   file/init.c\
 	   file/parse.c\
 	   file/tool.c\
-	   file/draw.c
+	   file/draw.c\
+	   file/intro.c\
+	   file/supplement.c\
+	   file/key.c\
 
 OBJS = $(SRCS:.c=.o)
 
