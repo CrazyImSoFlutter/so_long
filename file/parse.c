@@ -5,18 +5,19 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nogeun <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/17 15:51:40 by nogeun            #+#    #+#             */
-/*   Updated: 2021/07/17 17:21:27 by nogeun           ###   ########.fr       */
+/*   Created: 2021/10/09 21:00:05 by nogeun            #+#    #+#             */
+/*   Updated: 2021/10/10 00:50:32 by nogeun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	longest_line(t_all *s, char *map)
+void	parse_longest_line(t_all *s, char *map)
 {
 	char	*line;
 	int		fd;
 	int		ret;
+	int		tmp;
 
 	ret = 1;
 	fd = open(map, O_RDONLY);
@@ -27,21 +28,22 @@ void	longest_line(t_all *s, char *map)
 		ret = get_next_line(fd, &line);
 		if (line[0] == ' ' || line[0] == '1')
 		{
-			if (s->map.x <= tool_strlen(line))
-				s->map.x = tool_strlen(line);
+			tmp = tool_strlen(line);
 			s->map.y++;
 		}
+		if (s->map.x <= tmp)
+			s->map.x = tmp;
 		free(line);
 	}
 	close(fd);
 }
 
-int		set_map(t_all *s)
+int		parse_set_map(t_all *s)
 {
 	int		j;
 
 	j = -1;
-	if (!(s->map.map = malloc(sizeof(char *) * (s->map.y + 1))))
+	if (!(s->map.map = malloc(sizeof(char *) * (s->map.y + 2))))
 		return (-1);
 	while (++j < s->map.y + 2)
 	{
@@ -56,10 +58,12 @@ int		set_map(t_all *s)
 	return (0);
 }
 
-int		input_map(t_all *s, char *line, int *j)
+int		parse_input_map(t_all *s, char *line, int *j)
 {
 	int		k;
 
+	if (s->map.map == NULL)
+		s->err.n = parse_set_map(s);
 	k = 0;
 	while (k < s->map.x)
 	{
@@ -77,22 +81,22 @@ int		parse(t_all *s, char *map)
 	int		ret;
 	int		j;
 
-	longest_line(s, map);
-	set_map(s);
+	parse_longest_line(s, map);
 	ret = 1;
 	fd = open(map, O_RDONLY);
 	j = 0;
 	if (fd == -1)
 		printf("error");
-	if (s->map.map == NULL)
-		s->err.n = set_map(s);
 	while (ret == 1)
 	{
 		ret = get_next_line(fd, &line);
-		if (input_map(s, line, &j) == -1)
+		if (parse_input_map(s, line, &j) == -1)
 			ret = -1;
 		free(line);
 	}
 	close(fd);
-	return (0);
+	if (s->err.n < 0)
+		return (-1);
+	else
+		return (0);
 }

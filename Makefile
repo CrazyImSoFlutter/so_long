@@ -8,14 +8,16 @@ MLX = mlx
 
 LXFLAGS = -Lmlx -lmlx -framework OpenGL -framework Appkit
 
-HEADER = cub3d.h
+HEADER = so_long.h
 
 SRCS = gnl/get_next_line.c\
 	   gnl/get_next_line_utils.c\
 	   file/so_long.c\
+	   file/tex.c\
+	   file/init.c\
 	   file/parse.c\
-	   file/tools.c\
-	   file/tex_setting.c\
+	   file/tool.c\
+	   file/draw.c
 
 OBJS = $(SRCS:.c=.o)
 
@@ -24,7 +26,7 @@ all: $(NAME)
 $(NAME): $(MLX) $(OBJS)
 		$(CC) $(CFLAGS) -g -o $(NAME) $(OBJS) $(LXFLAGS)
 
-$(MLX): 
+$(MLX):
 		@$(MAKE) -C mlx
 
 clean:
