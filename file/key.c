@@ -6,7 +6,7 @@
 /*   By: nogeun <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 00:28:14 by nogeun            #+#    #+#             */
-/*   Updated: 2021/10/12 00:49:48 by nogeun           ###   ########.fr       */
+/*   Updated: 2021/10/12 13:00:23 by nogeun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ int		key_released(int k, t_all *s)
 
 int		key_update(t_all *s)
 {
-	if (s->key.w == 1) {
-		printf("yoho\n");
-		printf("%d\n", s->win.frame);
-	}
+	key_act_up(s);
+	key_act_left(s);
+	key_act_down(s);
+	key_act_right(s);
 	return (0);
 }

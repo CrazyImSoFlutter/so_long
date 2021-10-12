@@ -6,15 +6,27 @@
 /*   By: nogeun <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 01:11:15 by nogeun            #+#    #+#             */
-/*   Updated: 2021/10/12 01:04:32 by nogeun           ###   ########.fr       */
+/*   Updated: 2021/10/12 14:18:57 by nogeun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	draw_put_image_tile(t_all *s, void *img_ptr, int y, int x)
+void	draw_put_image_tile(t_all *s, int y, int x)
 {
-	mlx_put_image_to_window(s->mlx.ptr, s->win.ptr, img_ptr, x * 40, y * 40);
+	if (s->map.sup[y][x] == '1')
+	{
+		mlx_put_image_to_window(s->mlx.ptr, s->win.ptr, s->tex.sand, x * 40, y * 40);
+		mlx_put_image_to_window(s->mlx.ptr, s->win.ptr, s->tex.wall, x * 40, (y - 1) * 40);
+	}
+	else if (s->map.sup[y][x] == '0')
+	{
+		mlx_put_image_to_window(s->mlx.ptr, s->win.ptr, s->tex.sand, x * 40, y * 40);
+	}
+
+	else {
+		mlx_put_image_to_window(s->mlx.ptr, s->win.ptr, s->tex.sand, x * 40, y * 40);
+	}
 }
 
 void	draw_put_image(t_all *s, void *img_ptr, int y, int x)
@@ -33,20 +45,40 @@ void	draw_tiles(t_all *s)
 		j = -1;
 		while (++j < 30)
 		{
-			if (s->map.sup[i][j] == '0')
-				draw_put_image_tile(s, s->tex.sand, i, j);
-			else if (s->map.sup[i][j] == '1')
-			{
-				draw_put_image_tile(s, s->tex.sand, i, j);
-				draw_put_image_tile(s, s->tex.wall, i - 1, j);
-			}
-			else
-			{
-				draw_put_image_tile(s, s->tex.sand, i, j);
-			}
+			draw_put_image_tile(s, i, j);
 		}
 	}
 	if (s->win.frame >= 600)
 		s->win.frame = -1;
 	s->win.frame++;
+}
+
+void	draw_player(t_all *s)
+{
+	int		pos_y;
+	int		pos_x;
+
+	pos_y = s->player.pos_y / 40;
+	pos_x = s->player.pos_x / 40;
+	
+	draw_put_image_tile(s, pos_y, pos_x - 1);
+	draw_put_image_tile(s, pos_y, pos_x);
+	draw_put_image_tile(s, pos_y, pos_x + 1);
+	draw_put_image_tile(s, pos_y - 1, pos_x - 1);
+	draw_put_image_tile(s, pos_y - 1, pos_x);
+	draw_put_image_tile(s, pos_y - 1, pos_x + 1);
+	if (s->map.sup[pos_y + 1][pos_x - 1] == '1')
+		draw_put_image_tile(s, pos_y + 1, pos_x - 1);
+	if (s->map.sup[pos_y + 1][pos_x] == '1')
+		draw_put_image_tile(s, pos_y + 1, pos_x);
+	if (s->map.sup[pos_y + 1][pos_x + 1] == '1')
+		draw_put_image_tile(s, pos_y + 1, pos_x - 1);
+	if (s->map.sup[pos_y - 2][pos_x - 1] == '1')
+		draw_put_image_tile(s, pos_y + 1, pos_x);
+	if (s->map.sup[pos_y - 2][pos_x] == '1')
+		draw_put_image_tile(s, pos_y + 1, pos_x - 1);
+	if (s->map.sup[pos_y - 2][pos_x + 1] == '1')
+		draw_put_image_tile(s, pos_y + 1, pos_x);
+
+	draw_put_image(s, s->tex.player_right[0], s->player.pos_y - 40, s->player.pos_x - 20);
 }

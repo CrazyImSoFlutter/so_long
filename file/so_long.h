@@ -6,7 +6,7 @@
 /*   By: nogeun <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 23:24:35 by nogeun            #+#    #+#             */
-/*   Updated: 2021/10/12 00:47:14 by nogeun           ###   ########.fr       */
+/*   Updated: 2021/10/12 14:02:29 by nogeun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,9 +120,10 @@ int				parse(t_all *s, char *map);
 int				tool_strlen(char* line);
 
 /*about draw*/
-void			draw_put_image_tile(t_all *s, void *img_ptr, int x, int y);
+void			draw_put_image_tile(t_all *s, int y, int x);
 void			draw_put_image(t_all *s, void *img_ptr, int x, int y);
 void			draw_tiles(t_all *s);
+void			draw_player(t_all *s);
 
 /*about intro*/
 void			intro(t_all *s);
@@ -135,4 +136,16 @@ void			supplement_input_map(t_all *s);
 int				key_pressed(int k, t_all *s);
 int				key_released(int k, t_all *s);
 int				key_update(t_all *s);
+
+/*about key_act*/
+void			key_act_up(t_all *s);
+void			key_act_left(t_all *s);
+void			key_act_down(t_all *s);
+void			key_act_right(t_all *s);
+
+
+/*about pos*/
+void			pos_player(t_all *s);
+
+
 #endif

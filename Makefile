@@ -2,7 +2,7 @@ NAME = so_long
 
 CC = gcc
 
-CFLAGS = -O3 -Wall -Wextra -Werror -I.
+CFLAGS = -O1 -Wall -Wextra -Werror -I.
 
 MLX = mlx
 
@@ -21,6 +21,8 @@ SRCS = gnl/get_next_line.c\
 	   file/intro.c\
 	   file/supplement.c\
 	   file/key.c\
+	   file/pos.c\
+	   file/key_act.c\
 
 OBJS = $(SRCS:.c=.o)
 
