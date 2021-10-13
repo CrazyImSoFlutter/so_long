@@ -6,7 +6,7 @@
 /*   By: nogeun <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 12:48:25 by nogeun            #+#    #+#             */
-/*   Updated: 2021/10/13 22:00:34 by nogeun           ###   ########.fr       */
+/*   Updated: 2021/10/14 01:03:33 by nogeun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,8 +90,18 @@ void	key_act_enter(t_all *s)
 	{
 		if (s->win.frame >= 0 && s->win.frame < 250)
 			s->win.frame = 250;
-		else
+		else if (s->win.frame >= 250 && s->win.frame < 500)
 			s->win.frame = 500;
+		else if (s->win.frame >= 500 && s->win.frame < 750)
+			s->win.frame = 750;
+		else if (s->win.frame >= 750 && s->win.frame < 1000)
+			s->win.frame = 1000;
+		else if (s->win.frame >= 1000 && s->win.frame < 1250)
+			s->win.frame = 1250;
+		else if (s->win.frame >= 1250 && s->win.frame < 1500)
+			s->win.frame = 1500;
+		else if (s->win.frame >= 1500 && s->win.frame < 1750)
+			s->win.frame = 1750;
 		s->key.n = 0;
 	}
 }
