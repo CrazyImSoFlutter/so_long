@@ -6,7 +6,7 @@
 /*   By: nogeun <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 01:11:15 by nogeun            #+#    #+#             */
-/*   Updated: 2021/10/12 14:18:57 by nogeun           ###   ########.fr       */
+/*   Updated: 2021/10/13 21:54:02 by nogeun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,7 @@ void	draw_tiles(t_all *s)
 			draw_put_image_tile(s, i, j);
 		}
 	}
-	if (s->win.frame >= 600)
-		s->win.frame = -1;
-	s->win.frame++;
+	s->win.tile_flag = 0;
 }
 
 void	draw_player(t_all *s)
@@ -60,25 +58,28 @@ void	draw_player(t_all *s)
 
 	pos_y = s->player.pos_y / 40;
 	pos_x = s->player.pos_x / 40;
-	
-	draw_put_image_tile(s, pos_y, pos_x - 1);
-	draw_put_image_tile(s, pos_y, pos_x);
-	draw_put_image_tile(s, pos_y, pos_x + 1);
-	draw_put_image_tile(s, pos_y - 1, pos_x - 1);
-	draw_put_image_tile(s, pos_y - 1, pos_x);
-	draw_put_image_tile(s, pos_y - 1, pos_x + 1);
-	if (s->map.sup[pos_y + 1][pos_x - 1] == '1')
-		draw_put_image_tile(s, pos_y + 1, pos_x - 1);
-	if (s->map.sup[pos_y + 1][pos_x] == '1')
-		draw_put_image_tile(s, pos_y + 1, pos_x);
-	if (s->map.sup[pos_y + 1][pos_x + 1] == '1')
-		draw_put_image_tile(s, pos_y + 1, pos_x - 1);
-	if (s->map.sup[pos_y - 2][pos_x - 1] == '1')
-		draw_put_image_tile(s, pos_y + 1, pos_x);
-	if (s->map.sup[pos_y - 2][pos_x] == '1')
-		draw_put_image_tile(s, pos_y + 1, pos_x - 1);
-	if (s->map.sup[pos_y - 2][pos_x + 1] == '1')
-		draw_put_image_tile(s, pos_y + 1, pos_x);
-
-	draw_put_image(s, s->tex.player_right[0], s->player.pos_y - 40, s->player.pos_x - 20);
+	if (s->player.pos_x % 40 >= 20)
+	{
+		for (int i = 0; i <= pos_y; i++) {
+			draw_put_image_tile(s, i, pos_x);
+			draw_put_image_tile(s, i, pos_x + 1);
+		}
+		draw_put_image(s, s->player.img, s->player.pos_y - 40, s->player.pos_x - 20);
+		for (int i = pos_y + 1; i < 18; i++) {
+			draw_put_image_tile(s, i, pos_x);
+			draw_put_image_tile(s, i, pos_x + 1);
+		}
+	}
+	else
+	{
+		for (int i = 0; i <= pos_y; i++) {
+			draw_put_image_tile(s, i, pos_x);
+			draw_put_image_tile(s, i, pos_x - 1);
+		}
+		draw_put_image(s, s->player.img, s->player.pos_y - 40, s->player.pos_x - 20);
+		for (int i = pos_y + 1; i < 18; i++) {
+			draw_put_image_tile(s, i, pos_x);
+			draw_put_image_tile(s, i, pos_x - 1);
+		}
+	}
 }

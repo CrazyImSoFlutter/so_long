@@ -6,7 +6,7 @@
 /*   By: nogeun <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 23:47:03 by nogeun            #+#    #+#             */
-/*   Updated: 2021/10/12 13:47:50 by nogeun           ###   ########.fr       */
+/*   Updated: 2021/10/13 22:07:44 by nogeun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,18 @@ void	init_variables(t_all *s)
 	s->win.y = 720;
 	s->win.x = 1280;
 	s->win.intro_flag = 1;
+	s->win.tile_flag = 1;
 	s->win.frame = 0;
 	s->player.pos_y = 0;
 	s->player.pos_x = 0;
 	s->player.move_speed = 3;
+	s->player.frame = 0;
+	s->player.img = NULL;
+	s->key.w = 0;
+	s->key.s = 0;
+	s->key.a = 0;
+	s->key.d = 0;
+	s->key.n = 0;
 }
 
 void	init_screen(t_all *s, char **argv)
@@ -34,6 +42,7 @@ void	init_screen(t_all *s, char **argv)
 		exit(0);
 	supplement_input_map(s);
 	pos_player(s);
+	s->player.img = s->tex.player_left[0];
 	s->win.ptr = mlx_new_window(s->mlx.ptr, s->win.x, s->win.y, "so_long");
 	s->img.ptr = mlx_new_image(s->mlx.ptr, s->win.x, s->win.y);
 	tex_input(s);
@@ -41,15 +50,13 @@ void	init_screen(t_all *s, char **argv)
 
 int		main_loop(t_all *s)
 {
-	/*
 	if (s->win.intro_flag)
 		intro(s);
 	else {
-		draw_tiles(s);
+		if (s->win.tile_flag)
+			draw_tiles(s);
 		draw_player(s);
-		key_update(s);
-	}*/
-	draw_player(s);
+	}
 	key_update(s);
 	return 0;
 }
@@ -66,6 +73,5 @@ void	init_so_long(t_all *s, char **argv)
 {
 	init_variables(s);
 	init_screen(s, argv);
-	draw_tiles(s);
 	init_loop(s);
 }

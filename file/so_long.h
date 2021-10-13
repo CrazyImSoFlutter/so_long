@@ -6,7 +6,7 @@
 /*   By: nogeun <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 23:24:35 by nogeun            #+#    #+#             */
-/*   Updated: 2021/10/12 14:02:29 by nogeun           ###   ########.fr       */
+/*   Updated: 2021/10/13 21:47:49 by nogeun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # define KEY_DOWN 125
 # define KEY_LEFT 123
 # define KEY_RIGHT 124
+# define KEY_ENTER 36
 
 typedef struct		s_mlx {
 	void			*ptr;
@@ -38,6 +39,7 @@ typedef struct		s_win {
 	int				y;
 	int				frame;
 	int				intro_flag;
+	int				tile_flag;
 }					t_win;
 
 typedef struct		s_img {
@@ -63,8 +65,10 @@ typedef struct		s_map {
 
 typedef struct		s_tex {
 	int				*intro[4];
-	int				*player_left[4];
-	int				*player_right[4];
+	int				*player_left[8];
+	int				*player_right[8];
+	int				*player_up[8];
+	int				*player_down[8];
 	int				*enemy_left[4];
 	int				*enemy_right[4];
 	int				*sand;
@@ -75,6 +79,8 @@ typedef struct		s_player {
 	int				pos_y;
 	int				pos_x;
 	int				move_speed;
+	int				frame;
+	int				*img;
 }					t_player;
 
 typedef struct		s_key {
@@ -82,6 +88,7 @@ typedef struct		s_key {
 	int				a;
 	int				s;
 	int				d;
+	int				n;
 }					t_key;
 
 typedef struct		s_err {
@@ -142,7 +149,7 @@ void			key_act_up(t_all *s);
 void			key_act_left(t_all *s);
 void			key_act_down(t_all *s);
 void			key_act_right(t_all *s);
-
+void			key_act_enter(t_all *s);
 
 /*about pos*/
 void			pos_player(t_all *s);

@@ -6,7 +6,7 @@
 /*   By: nogeun <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 19:41:32 by nogeun            #+#    #+#             */
-/*   Updated: 2021/10/12 00:55:31 by nogeun           ###   ########.fr       */
+/*   Updated: 2021/10/12 22:41:03 by nogeun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	intro(t_all *s)
 	void	*img;
 	int		index;
 
-	if (s->win.frame >= 0 && s->win.frame < 300)
+	if (s->win.frame >= 0 && s->win.frame < 250)
 		index = 0;
 	else
 		index = 1;
@@ -25,6 +25,6 @@ void	intro(t_all *s)
 	img = s->tex.intro[index];
 	draw_put_image(s, img, 120, 280);
 	s->win.frame++;
-	if (s->win.frame >= 600)
+	if (s->win.frame >= 500)
 		s->win.intro_flag = 0;
 }
