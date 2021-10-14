@@ -6,7 +6,7 @@
 /*   By: nogeun <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 23:34:18 by nogeun            #+#    #+#             */
-/*   Updated: 2021/10/14 01:00:52 by nogeun           ###   ########.fr       */
+/*   Updated: 2021/10/14 16:38:29 by nogeun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,13 @@ void	tex_input(t_all *s)
 	s->tex.player_left[5] = tex_input_xpm(s, "textures/player_left5.xpm");
 	s->tex.player_left[6] = tex_input_xpm(s, "textures/player_left6.xpm");
 	s->tex.player_left[7] = tex_input_xpm(s, "textures/player_left7.xpm");
-	//s->tex.player_right[0] = tex_input_xpm(s, "textures/player_right1.xpm");
+	s->tex.player_right[0] = tex_input_xpm(s, "textures/player_right0.xpm");
+	s->tex.player_right[1] = tex_input_xpm(s, "textures/player_right1.xpm");
+	s->tex.player_right[2] = tex_input_xpm(s, "textures/player_right2.xpm");
+	s->tex.player_right[3] = tex_input_xpm(s, "textures/player_right3.xpm");
+	s->tex.player_right[4] = tex_input_xpm(s, "textures/player_right4.xpm");
+	s->tex.player_right[5] = tex_input_xpm(s, "textures/player_right5.xpm");
+	s->tex.player_right[6] = tex_input_xpm(s, "textures/player_right6.xpm");
+	s->tex.player_right[7] = tex_input_xpm(s, "textures/player_right7.xpm");
+
 }

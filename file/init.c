@@ -6,7 +6,7 @@
 /*   By: nogeun <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 23:47:03 by nogeun            #+#    #+#             */
-/*   Updated: 2021/10/13 22:07:44 by nogeun           ###   ########.fr       */
+/*   Updated: 2021/10/14 17:01:12 by nogeun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	init_variables(t_all *s)
 	s->player.pos_y = 0;
 	s->player.pos_x = 0;
 	s->player.move_speed = 3;
-	s->player.frame = 0;
+	s->player.frame = 1;
 	s->player.img = NULL;
 	s->key.w = 0;
 	s->key.s = 0;
@@ -42,10 +42,11 @@ void	init_screen(t_all *s, char **argv)
 		exit(0);
 	supplement_input_map(s);
 	pos_player(s);
+	tex_input(s);
 	s->player.img = s->tex.player_left[0];
 	s->win.ptr = mlx_new_window(s->mlx.ptr, s->win.x, s->win.y, "so_long");
 	s->img.ptr = mlx_new_image(s->mlx.ptr, s->win.x, s->win.y);
-	tex_input(s);
+
 }
 
 int		main_loop(t_all *s)
