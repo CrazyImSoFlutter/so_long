@@ -6,7 +6,7 @@
 /*   By: nogeun <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 12:48:25 by nogeun            #+#    #+#             */
-/*   Updated: 2021/10/14 17:13:15 by nogeun           ###   ########.fr       */
+/*   Updated: 2021/10/15 00:23:28 by nogeun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	key_act_up(t_all *s)
 	int		i;
 	int		j;
 
-	i = (s->player.pos_y - 5 - s->player.move_speed) / 64;
+	i = (s->player.pos_y - 20 - s->player.move_speed) / 64;
 	j = s->player.pos_x / 64;
 	if (s->key.w == 1)
 	{
@@ -64,7 +64,7 @@ void	key_act_down(t_all *s)
 	int		i;
 	int		j;
 
-	i = (s->player.pos_y + 5 + s->player.move_speed) / 64;
+	i = (s->player.pos_y + 20 + s->player.move_speed) / 64;
 	j = s->player.pos_x / 64;
 	if (s->key.s == 1)
 	{

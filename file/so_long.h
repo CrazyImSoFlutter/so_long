@@ -6,7 +6,7 @@
 /*   By: nogeun <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 23:24:35 by nogeun            #+#    #+#             */
-/*   Updated: 2021/10/14 00:43:20 by nogeun           ###   ########.fr       */
+/*   Updated: 2021/10/15 00:15:52 by nogeun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # define KEY_LEFT 123
 # define KEY_RIGHT 124
 # define KEY_ENTER 36
+# define KEY_SPACE 49
 
 typedef struct		s_mlx {
 	void			*ptr;
@@ -80,6 +81,9 @@ typedef struct		s_player {
 	int				pos_x;
 	int				move_speed;
 	int				frame;
+	int				skill_frame;
+	int				skill_flag;
+	int				skill_direction;
 	int				*img;
 }					t_player;
 
@@ -89,6 +93,7 @@ typedef struct		s_key {
 	int				s;
 	int				d;
 	int				n;
+	int				space;
 }					t_key;
 
 typedef struct		s_err {
@@ -150,9 +155,11 @@ void			key_act_left(t_all *s);
 void			key_act_down(t_all *s);
 void			key_act_right(t_all *s);
 void			key_act_enter(t_all *s);
+void			key_act_wall_jump_left(t_all *s);
 
 /*about pos*/
 void			pos_player(t_all *s);
 
-
+/*about wall_jump*/
+void			wall_jump(t_all *s);
 #endif

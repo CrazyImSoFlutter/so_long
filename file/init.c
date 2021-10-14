@@ -6,7 +6,7 @@
 /*   By: nogeun <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 23:47:03 by nogeun            #+#    #+#             */
-/*   Updated: 2021/10/14 17:01:12 by nogeun           ###   ########.fr       */
+/*   Updated: 2021/10/14 23:52:11 by nogeun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,10 @@ void	init_variables(t_all *s)
 	s->key.a = 0;
 	s->key.d = 0;
 	s->key.n = 0;
+	s->key.space = 0;
+	s->player.skill_frame = -1;
+	s->player.skill_flag = 0;
+	s->player.skill_direction = 0;
 }
 
 void	init_screen(t_all *s, char **argv)
