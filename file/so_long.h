@@ -6,7 +6,7 @@
 /*   By: nogeun <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 23:24:35 by nogeun            #+#    #+#             */
-/*   Updated: 2021/10/15 00:15:52 by nogeun           ###   ########.fr       */
+/*   Updated: 2021/10/17 14:49:00 by nogeun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ typedef struct		s_tex {
 	int				*player_right[8];
 	int				*player_up[8];
 	int				*player_down[8];
+	int				*jump[11];
 	int				*enemy_left[4];
 	int				*enemy_right[4];
 	int				*sand;

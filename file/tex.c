@@ -6,7 +6,7 @@
 /*   By: nogeun <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 23:34:18 by nogeun            #+#    #+#             */
-/*   Updated: 2021/10/14 16:38:29 by nogeun           ###   ########.fr       */
+/*   Updated: 2021/10/17 14:48:40 by nogeun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,15 @@ void	tex_input(t_all *s)
 	s->tex.player_right[5] = tex_input_xpm(s, "textures/player_right5.xpm");
 	s->tex.player_right[6] = tex_input_xpm(s, "textures/player_right6.xpm");
 	s->tex.player_right[7] = tex_input_xpm(s, "textures/player_right7.xpm");
-
+	s->tex.jump[0] = tex_input_xpm(s, "textures/jump0.xpm");
+	s->tex.jump[1] = tex_input_xpm(s, "textures/jump1.xpm");
+	s->tex.jump[2] = tex_input_xpm(s, "textures/jump2.xpm");
+	s->tex.jump[3] = tex_input_xpm(s, "textures/jump3.xpm");
+	s->tex.jump[4] = tex_input_xpm(s, "textures/jump4.xpm");
+	s->tex.jump[5] = tex_input_xpm(s, "textures/jump5.xpm");
+	s->tex.jump[6] = tex_input_xpm(s, "textures/jump6.xpm");
+	s->tex.jump[7] = tex_input_xpm(s, "textures/jump7.xpm");
+	s->tex.jump[8] = tex_input_xpm(s, "textures/jump8.xpm");
+	s->tex.jump[9] = tex_input_xpm(s, "textures/jump9.xpm");
+	s->tex.jump[10] = tex_input_xpm(s, "textures/jump10.xpm");
 }
