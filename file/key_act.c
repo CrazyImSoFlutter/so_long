@@ -6,7 +6,7 @@
 /*   By: nogeun <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 12:48:25 by nogeun            #+#    #+#             */
-/*   Updated: 2021/10/15 00:23:28 by nogeun           ###   ########.fr       */
+/*   Updated: 2021/12/14 16:42:35 by noguen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,46 @@ void	key_act_up(t_all *s)
 {
 	int		i;
 	int		j;
+    int     **tex;
 
 	i = (s->player.pos_y - 20 - s->player.move_speed) / 64;
 	j = s->player.pos_x / 64;
-	if (s->key.w == 1)
+    if (s->player.pos_map_y != i || s->player.pos_map_x != j) {
+        s->player.move++;
+        s->player.pos_map_y = i;
+        s->player.pos_map_x = j;
+    }
+    if (s->player.direction == 0)
+        tex = s->tex.player_left;
+    else
+        tex = s->tex.player_right;
+	if (s->key.w == 1 && s->key.a == 0 && s->key.d == 0 && s->key.s == 0)
 	{
+		s->player.frame++;
+		if (s->player.frame >= 32)
+			s->player.frame = 0;
 		if (s->map.sup[i][j] != '1')
 			s->player.pos_y -= s->player.move_speed;
-	}
+		if (s->player.frame % 32 >= 0 && s->player.frame < 4)
+			s->player.img = tex[0];
+		else if (s->player.frame % 32 >= 4 && s->player.frame < 8)
+			s->player.img = tex[1];
+		else if (s->player.frame % 32 >= 8 && s->player.frame < 12)
+			s->player.img = tex[2];
+		else if (s->player.frame % 32 >= 12 && s->player.frame < 16)
+			s->player.img = tex[3];
+		else if (s->player.frame % 32 >= 16 && s->player.frame < 20)
+			s->player.img = tex[4];
+		else if (s->player.frame % 32 >= 20 && s->player.frame < 24)
+			s->player.img = tex[5];
+		else if (s->player.frame % 32 >= 24 && s->player.frame < 28)
+			s->player.img = tex[6];
+		else if (s->player.frame % 32 >= 28 && s->player.frame < 32)
+			s->player.img = tex[7];
+	} else if (s->key.w == 1 && s->key.s == 0) {
+		if (s->map.sup[i][j] != '1')
+			s->player.pos_y -= s->player.move_speed;
+    }
 }
 
 void	key_act_left(t_all *s)
@@ -33,8 +65,14 @@ void	key_act_left(t_all *s)
 
 	i = s->player.pos_y / 64;
 	j = (s->player.pos_x - 20 - s->player.move_speed) / 64;
-	if (s->key.a == 1)
+    if (s->player.pos_map_y != i || s->player.pos_map_x != j) {
+        s->player.move++;
+        s->player.pos_map_y = i;
+        s->player.pos_map_x = j;
+    }
+	if (s->key.a == 1 && s->key.d == 0)
 	{
+        s->player.direction = 0;
 		s->player.frame++;
 		if (s->player.frame >= 32)
 			s->player.frame = 0;
@@ -63,14 +101,47 @@ void	key_act_down(t_all *s)
 {
 	int		i;
 	int		j;
+    int     **tex;
 
 	i = (s->player.pos_y + 20 + s->player.move_speed) / 64;
 	j = s->player.pos_x / 64;
-	if (s->key.s == 1)
+    if (s->player.pos_map_y != i || s->player.pos_map_x != j) {
+        s->player.move++;
+        s->player.pos_map_y = i;
+        s->player.pos_map_x = j;
+    }
+    if (s->player.direction == 0)
+        tex = s->tex.player_left;
+    else
+        tex = s->tex.player_right;
+	if (s->key.w == 0 && s->key.a == 0 && s->key.d == 0 && s->key.s == 1)
 	{
+		s->player.frame++;
+		if (s->player.frame >= 32)
+			s->player.frame = 0;
 		if (s->map.sup[i][j] != '1')
 			s->player.pos_y += s->player.move_speed;
-	}
+		if (s->player.frame % 32 >= 0 && s->player.frame < 4)
+			s->player.img = tex[0];
+		else if (s->player.frame % 32 >= 4 && s->player.frame < 8)
+			s->player.img = tex[1];
+		else if (s->player.frame % 32 >= 8 && s->player.frame < 12)
+			s->player.img = tex[2];
+		else if (s->player.frame % 32 >= 12 && s->player.frame < 16)
+			s->player.img = tex[3];
+		else if (s->player.frame % 32 >= 16 && s->player.frame < 20)
+			s->player.img = tex[4];
+		else if (s->player.frame % 32 >= 20 && s->player.frame < 24)
+			s->player.img = tex[5];
+		else if (s->player.frame % 32 >= 24 && s->player.frame < 28)
+			s->player.img = tex[6];
+		else if (s->player.frame % 32 >= 28 && s->player.frame < 32)
+			s->player.img = tex[7];
+	} else if (s->key.w == 0 && s->key.s == 1) {
+		if (s->map.sup[i][j] != '1')
+			s->player.pos_y += s->player.move_speed;
+    }
+
 }
 
 void	key_act_right(t_all *s)
@@ -80,8 +151,14 @@ void	key_act_right(t_all *s)
 
 	i = s->player.pos_y / 64;
 	j = (s->player.pos_x + 20 + s->player.move_speed) / 64;
+    if (s->player.pos_map_y != i || s->player.pos_map_x != j) {
+        s->player.move++;
+        s->player.pos_map_y = i;
+        s->player.pos_map_x = j;
+    }
 	if (s->key.d == 1)
 	{
+        s->player.direction = 1;
 		s->player.frame++;
 		if (s->player.frame >= 32)
 			s->player.frame = 0;

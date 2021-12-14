@@ -6,7 +6,7 @@
 /*   By: nogeun <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 23:24:35 by nogeun            #+#    #+#             */
-/*   Updated: 2021/10/17 14:49:00 by nogeun           ###   ########.fr       */
+/*   Updated: 2021/12/14 16:41:12 by noguen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@
 # define KEY_RIGHT 124
 # define KEY_ENTER 36
 # define KEY_SPACE 49
+# define KEY_Q 12
+# define KEY_ESC 53
 
 typedef struct		s_mlx {
 	void			*ptr;
@@ -70,7 +72,6 @@ typedef struct		s_tex {
 	int				*player_right[8];
 	int				*player_up[8];
 	int				*player_down[8];
-	int				*jump[11];
 	int				*enemy_left[4];
 	int				*enemy_right[4];
 	int				*sand;
@@ -80,11 +81,12 @@ typedef struct		s_tex {
 typedef struct		s_player {
 	int				pos_y;
 	int				pos_x;
+    int             pos_map_y;
+    int             pos_map_x;
+    int             move;
 	int				move_speed;
 	int				frame;
-	int				skill_frame;
-	int				skill_flag;
-	int				skill_direction;
+	int				direction;
 	int				*img;
 }					t_player;
 
@@ -94,6 +96,7 @@ typedef struct		s_key {
 	int				s;
 	int				d;
 	int				n;
+    int             q;
 	int				space;
 }					t_key;
 
@@ -158,9 +161,10 @@ void			key_act_right(t_all *s);
 void			key_act_enter(t_all *s);
 void			key_act_wall_jump_left(t_all *s);
 
+/*about key_quit*/
+void            key_act_quit(t_all *s);
+
 /*about pos*/
 void			pos_player(t_all *s);
 
-/*about wall_jump*/
-void			wall_jump(t_all *s);
 #endif

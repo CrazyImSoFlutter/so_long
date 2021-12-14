@@ -23,8 +23,7 @@ SRCS = gnl/get_next_line.c\
 	   file/key.c\
 	   file/pos.c\
 	   file/key_act.c\
-	   file/key_skill.c\
-	   file/wall_jump.c\
+	   file/key_quit.c\
 
 OBJS = $(SRCS:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: nogeun <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 23:47:03 by nogeun            #+#    #+#             */
-/*   Updated: 2021/10/14 23:52:11 by nogeun           ###   ########.fr       */
+/*   Updated: 2021/12/14 16:43:26 by noguen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,18 @@ void	init_variables(t_all *s)
 	s->win.frame = 0;
 	s->player.pos_y = 0;
 	s->player.pos_x = 0;
-	s->player.move_speed = 3;
+	s->player.move_speed = 2;
 	s->player.frame = 1;
 	s->player.img = NULL;
+    s->player.move = 0;
 	s->key.w = 0;
 	s->key.s = 0;
 	s->key.a = 0;
 	s->key.d = 0;
 	s->key.n = 0;
+    s->key.q = 0;
 	s->key.space = 0;
-	s->player.skill_frame = -1;
-	s->player.skill_flag = 0;
-	s->player.skill_direction = 0;
+	s->player.direction = 0;
 }
 
 void	init_screen(t_all *s, char **argv)

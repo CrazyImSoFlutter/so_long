@@ -6,7 +6,7 @@
 /*   By: nogeun <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 01:11:15 by nogeun            #+#    #+#             */
-/*   Updated: 2021/10/17 14:41:15 by nogeun           ###   ########.fr       */
+/*   Updated: 2021/12/14 16:23:18 by noguen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,7 @@ void	draw_player(t_all *s)
 			draw_put_image_tile(s, i, pos_x);
 			draw_put_image_tile(s, i, pos_x + 1);
 		}
-		if (s->player.skill_flag == 1)
-			draw_put_image(s, s->player.img, s->player.pos_y - 128, s->player.pos_x - 32);
-		else
-			draw_put_image(s, s->player.img, s->player.pos_y - 64, s->player.pos_x - 32);
+		draw_put_image(s, s->player.img, s->player.pos_y - 64, s->player.pos_x - 32);
 		for (int i = pos_y + 1; i < 10; i++) {
 			draw_put_image_tile(s, i, pos_x);
 			draw_put_image_tile(s, i, pos_x + 1);
@@ -79,10 +76,7 @@ void	draw_player(t_all *s)
 			draw_put_image_tile(s, i, pos_x);
 			draw_put_image_tile(s, i, pos_x - 1);
 		}
-		if (s->player.skill_flag == 1)
-			draw_put_image(s, s->player.img, s->player.pos_y - 128, s->player.pos_x - 32);
-		else
-			draw_put_image(s, s->player.img, s->player.pos_y - 64, s->player.pos_x - 32);
+		draw_put_image(s, s->player.img, s->player.pos_y - 64, s->player.pos_x - 32);
 		for (int i = pos_y + 1; i < 10; i++) {
 			draw_put_image_tile(s, i, pos_x);
 			draw_put_image_tile(s, i, pos_x - 1);
