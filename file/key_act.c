@@ -6,7 +6,7 @@
 /*   By: nogeun <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 12:48:25 by nogeun            #+#    #+#             */
-/*   Updated: 2021/12/14 16:42:35 by noguen           ###   ########.fr       */
+/*   Updated: 2021/12/20 17:57:28 by noguen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,13 @@ void	key_act_up(t_all *s)
 {
 	int		i;
 	int		j;
+    int     precise_i;
+    int     precise_j;
     int     **tex;
 
 	i = (s->player.pos_y - 20 - s->player.move_speed) / 64;
 	j = s->player.pos_x / 64;
-    if (s->player.pos_map_y != i || s->player.pos_map_x != j) {
-        s->player.move++;
-        s->player.pos_map_y = i;
-        s->player.pos_map_x = j;
-    }
+
     if (s->player.direction == 0)
         tex = s->tex.player_left;
     else
@@ -36,6 +34,17 @@ void	key_act_up(t_all *s)
 			s->player.frame = 0;
 		if (s->map.sup[i][j] != '1')
 			s->player.pos_y -= s->player.move_speed;
+
+        precise_i = s->player.pos_y / 64;
+        precise_j = s->player.pos_x / 64;
+        if (s->player.pos_map_y != precise_i || 
+                s->player.pos_map_x != precise_j) {
+            s->player.move++;
+            printf("player_move: %d\n", s->player.move);
+            s->player.pos_map_y = precise_i;
+            s->player.pos_map_x = precise_j;
+        }
+
 		if (s->player.frame % 32 >= 0 && s->player.frame < 4)
 			s->player.img = tex[0];
 		else if (s->player.frame % 32 >= 4 && s->player.frame < 8)
@@ -62,14 +71,11 @@ void	key_act_left(t_all *s)
 {
 	int		i;
 	int		j;
+    int     precise_i;
+    int     precise_j;
 
 	i = s->player.pos_y / 64;
 	j = (s->player.pos_x - 20 - s->player.move_speed) / 64;
-    if (s->player.pos_map_y != i || s->player.pos_map_x != j) {
-        s->player.move++;
-        s->player.pos_map_y = i;
-        s->player.pos_map_x = j;
-    }
 	if (s->key.a == 1 && s->key.d == 0)
 	{
         s->player.direction = 0;
@@ -78,6 +84,17 @@ void	key_act_left(t_all *s)
 			s->player.frame = 0;
 		if (s->map.sup[i][j] != '1')
 			s->player.pos_x -= s->player.move_speed;
+
+        precise_i = s->player.pos_y / 64;
+        precise_j = s->player.pos_x / 64;
+        if (s->player.pos_map_y != precise_i || 
+                s->player.pos_map_x != precise_j) {
+            s->player.move++;
+            printf("player_move: %d\n", s->player.move);
+            s->player.pos_map_y = precise_i;
+            s->player.pos_map_x = precise_j;
+        }
+
 		if (s->player.frame % 32 >= 0 && s->player.frame < 4)
 			s->player.img = s->tex.player_left[0];
 		else if (s->player.frame % 32 >= 4 && s->player.frame < 8)
@@ -101,15 +118,13 @@ void	key_act_down(t_all *s)
 {
 	int		i;
 	int		j;
+    int     precise_i;
+    int     precise_j;
     int     **tex;
 
 	i = (s->player.pos_y + 20 + s->player.move_speed) / 64;
 	j = s->player.pos_x / 64;
-    if (s->player.pos_map_y != i || s->player.pos_map_x != j) {
-        s->player.move++;
-        s->player.pos_map_y = i;
-        s->player.pos_map_x = j;
-    }
+
     if (s->player.direction == 0)
         tex = s->tex.player_left;
     else
@@ -121,6 +136,17 @@ void	key_act_down(t_all *s)
 			s->player.frame = 0;
 		if (s->map.sup[i][j] != '1')
 			s->player.pos_y += s->player.move_speed;
+
+        precise_i = s->player.pos_y / 64;
+        precise_j = s->player.pos_x / 64;
+        if (s->player.pos_map_y != precise_i || 
+                s->player.pos_map_x != precise_j) {
+            s->player.move++;
+            printf("player_move: %d\n", s->player.move);
+            s->player.pos_map_y = precise_i;
+            s->player.pos_map_x = precise_j;
+        }
+
 		if (s->player.frame % 32 >= 0 && s->player.frame < 4)
 			s->player.img = tex[0];
 		else if (s->player.frame % 32 >= 4 && s->player.frame < 8)
@@ -148,14 +174,12 @@ void	key_act_right(t_all *s)
 {
 	int		i;
 	int		j;
+    int     precise_i;
+    int     precise_j;
 
 	i = s->player.pos_y / 64;
 	j = (s->player.pos_x + 20 + s->player.move_speed) / 64;
-    if (s->player.pos_map_y != i || s->player.pos_map_x != j) {
-        s->player.move++;
-        s->player.pos_map_y = i;
-        s->player.pos_map_x = j;
-    }
+
 	if (s->key.d == 1)
 	{
         s->player.direction = 1;
@@ -164,6 +188,17 @@ void	key_act_right(t_all *s)
 			s->player.frame = 0;
 		if (s->map.sup[i][j] != '1')
 			s->player.pos_x += s->player.move_speed;
+
+        precise_i = s->player.pos_y / 64;
+        precise_j = s->player.pos_x / 64;
+        if (s->player.pos_map_y != precise_i || 
+                s->player.pos_map_x != precise_j) {
+            s->player.move++;
+            printf("player_move: %d\n", s->player.move);
+            s->player.pos_map_y = precise_i;
+            s->player.pos_map_x = precise_j;
+        }
+
 		if (s->player.frame % 32 >= 0 && s->player.frame < 4)
 			s->player.img = s->tex.player_right[0];
 		else if (s->player.frame % 32 >= 4 && s->player.frame < 8)

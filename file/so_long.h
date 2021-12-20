@@ -6,7 +6,7 @@
 /*   By: nogeun <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 23:24:35 by nogeun            #+#    #+#             */
-/*   Updated: 2021/12/14 16:41:12 by noguen           ###   ########.fr       */
+/*   Updated: 2021/12/20 17:33:37 by noguen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,7 +159,6 @@ void			key_act_left(t_all *s);
 void			key_act_down(t_all *s);
 void			key_act_right(t_all *s);
 void			key_act_enter(t_all *s);
-void			key_act_wall_jump_left(t_all *s);
 
 /*about key_quit*/
 void            key_act_quit(t_all *s);

@@ -6,7 +6,7 @@
 /*   By: nogeun <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 12:26:35 by nogeun            #+#    #+#             */
-/*   Updated: 2021/10/14 16:44:41 by nogeun           ###   ########.fr       */
+/*   Updated: 2021/12/20 17:39:35 by noguen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ void	pos_player(t_all *s)
 	int		j;
 
 	i = -1;
-	while (++i < 10)
+	while (++i < s->map.y)
 	{
 		j = -1;
-		while (++j < 20)
+		while (++j < s->map.x)
 		{
 			if (s->map.sup[i][j] == 'P')
 			{
