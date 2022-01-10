@@ -6,7 +6,7 @@
 /*   By: nogeun <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 23:34:18 by nogeun            #+#    #+#             */
-/*   Updated: 2021/12/14 16:08:29 by noguen           ###   ########.fr       */
+/*   Updated: 2022/01/10 20:36:49 by noguen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	tex_input(t_all *s)
 	s->tex.intro[6] = tex_input_xpm(s, "textures/intro6.xpm");
 	s->tex.wall = tex_input_xpm(s, "textures/wall.xpm");
 	s->tex.sand = tex_input_xpm(s, "textures/sand.xpm");
+    s->tex.object = tex_input_xpm(s, "textures/object.xpm");
 	s->tex.player_left[0] = tex_input_xpm(s, "textures/player_left0.xpm");
 	s->tex.player_left[1] = tex_input_xpm(s, "textures/player_left1.xpm");
 	s->tex.player_left[2] = tex_input_xpm(s, "textures/player_left2.xpm");
@@ -49,4 +50,12 @@ void	tex_input(t_all *s)
 	s->tex.player_right[5] = tex_input_xpm(s, "textures/player_right5.xpm");
 	s->tex.player_right[6] = tex_input_xpm(s, "textures/player_right6.xpm");
 	s->tex.player_right[7] = tex_input_xpm(s, "textures/player_right7.xpm");
+    s->tex.exit[0] = tex_input_xpm(s, "textures/exit0.xpm");
+    s->tex.exit[1] = tex_input_xpm(s, "textures/exit1.xpm");
+    s->tex.exit[2] = tex_input_xpm(s, "textures/exit2.xpm");
+    s->tex.exit[3] = tex_input_xpm(s, "textures/exit3.xpm");
+    s->tex.exit[4] = tex_input_xpm(s, "textures/exit4.xpm");
+    s->tex.exit[5] = tex_input_xpm(s, "textures/exit5.xpm");
+    s->tex.exit[6] = tex_input_xpm(s, "textures/exit6.xpm");
+    s->tex.exit[7] = tex_input_xpm(s, "textures/exit7.xpm");
 }

@@ -6,7 +6,7 @@
 /*   By: nogeun <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 23:24:35 by nogeun            #+#    #+#             */
-/*   Updated: 2021/12/20 17:33:37 by noguen           ###   ########.fr       */
+/*   Updated: 2022/01/10 22:13:16 by noguen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,10 @@ typedef struct		s_map {
 	int				mapx;
 	int				mapy;
 	int				spr;
+    int             exit_flag;
+    int             exit_frame;
+    int             exit_y;
+    int             exit_x;
 }					t_map;
 
 typedef struct		s_tex {
@@ -74,8 +78,10 @@ typedef struct		s_tex {
 	int				*player_down[8];
 	int				*enemy_left[4];
 	int				*enemy_right[4];
+    int             *exit[8];
 	int				*sand;
 	int				*wall;
+    int             *object;
 }					t_tex;
 
 typedef struct		s_player {
@@ -114,6 +120,7 @@ typedef struct		s_all {
 	t_player		player;
 	t_key			key;
 	t_err			err;
+    int             object_count;
 }					t_all;
 
 /*about init*/
@@ -135,14 +142,29 @@ int				parse(t_all *s, char *map);
 /*about tool*/
 int				tool_strlen(char* line);
 
-/*about draw*/
-void			draw_put_image_tile(t_all *s, int y, int x);
+/*about draw_utils*/
 void			draw_put_image(t_all *s, void *img_ptr, int x, int y);
+void            draw_two(t_all *s, void *first, void *second, int y, int x);
+
+/*about draw_tiles*/
+void			draw_put_image_tile(t_all *s, int y, int x);
 void			draw_tiles(t_all *s);
+
+/*about draw_player*/
 void			draw_player(t_all *s);
+
+/*about draw_exit*/
+void            draw_exit(t_all *s);
+
+/*about exit*/
+void            find_exit(t_all *s);
 
 /*about intro*/
 void			intro(t_all *s);
+
+/*about object*/
+void            object_count(t_all *s);
+void            object_get(t_all *s);
 
 /*about supplement*/
 int				supplement_set_map(t_all *s);

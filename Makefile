@@ -10,20 +10,40 @@ LXFLAGS = -Lmlx -lmlx -framework OpenGL -framework Appkit
 
 HEADER = so_long.h
 
-SRCS = gnl/get_next_line.c\
-	   gnl/get_next_line_utils.c\
-	   file/so_long.c\
-	   file/tex.c\
-	   file/init.c\
-	   file/parse.c\
-	   file/tool.c\
-	   file/draw.c\
-	   file/intro.c\
-	   file/supplement.c\
-	   file/key.c\
-	   file/pos.c\
-	   file/key_act.c\
-	   file/key_quit.c\
+SRC_PATH = ./file/
+
+SRC_GNL = get_next_line.c\
+		  get_next_line_utils.c\
+
+
+SRC_DRAW = draw_player.c\
+		   draw_tiles.c\
+		   draw_utils.c\
+		   draw_exit.c\
+
+SRC_GAME = intro.c\
+		   object.c\
+		   exit.c\
+		   so_long.c\
+
+SRC_INIT = init.c\
+		   parse.c\
+		   pos.c\
+		   supplement.c\
+		   tex.c\
+
+SRC_KEY = key.c\
+		  key_act.c\
+		  key_quit.c\
+
+SRC_TOOL = tool.c\
+
+SRCS = $(addprefix gnl/, $(SRC_GNL))\
+	   $(addprefix $(SRC_PATH)draw/, $(SRC_DRAW))\
+	   $(addprefix $(SRC_PATH)game/, $(SRC_GAME))\
+	   $(addprefix $(SRC_PATH)init/, $(SRC_INIT))\
+	   $(addprefix $(SRC_PATH)key/, $(SRC_KEY))\
+	   $(addprefix $(SRC_PATH)tool/, $(SRC_TOOL))\
 
 OBJS = $(SRCS:.c=.o)
 

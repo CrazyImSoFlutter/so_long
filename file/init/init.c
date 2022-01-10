@@ -6,7 +6,7 @@
 /*   By: nogeun <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 23:47:03 by nogeun            #+#    #+#             */
-/*   Updated: 2021/12/14 16:43:26 by noguen           ###   ########.fr       */
+/*   Updated: 2022/01/10 22:20:30 by noguen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,9 @@ void	init_variables(t_all *s)
     s->key.q = 0;
 	s->key.space = 0;
 	s->player.direction = 0;
+    s->object_count = 0;
+    s->map.exit_flag = 0;
+    s->map.exit_frame = 0;
 }
 
 void	init_screen(t_all *s, char **argv)
@@ -47,6 +50,8 @@ void	init_screen(t_all *s, char **argv)
 	supplement_input_map(s);
 	pos_player(s);
 	tex_input(s);
+    object_count(s);
+    find_exit(s);
 	s->player.img = s->tex.player_left[0];
 	s->win.ptr = mlx_new_window(s->mlx.ptr, s->win.x, s->win.y, "so_long");
 	s->img.ptr = mlx_new_image(s->mlx.ptr, s->win.x, s->win.y);
@@ -60,9 +65,12 @@ int		main_loop(t_all *s)
 	else {
 		if (s->win.tile_flag)
 			draw_tiles(s);
+        if (s->map.exit_flag)
+            draw_exit(s);
 		draw_player(s);
 	}
 	key_update(s);
+    object_get(s);
 	return 0;
 }
 
