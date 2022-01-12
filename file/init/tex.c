@@ -6,7 +6,7 @@
 /*   By: nogeun <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 23:34:18 by nogeun            #+#    #+#             */
-/*   Updated: 2022/01/10 20:36:49 by noguen           ###   ########.fr       */
+/*   Updated: 2022/01/12 19:08:32 by noguen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,6 @@ void	tex_input(t_all *s)
     s->tex.exit[5] = tex_input_xpm(s, "textures/exit5.xpm");
     s->tex.exit[6] = tex_input_xpm(s, "textures/exit6.xpm");
     s->tex.exit[7] = tex_input_xpm(s, "textures/exit7.xpm");
+    s->tex.black = tex_input_xpm(s, "textures/black.xpm");
+
 }

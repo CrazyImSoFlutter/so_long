@@ -6,7 +6,7 @@
 /*   By: nogeun <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 23:24:35 by nogeun            #+#    #+#             */
-/*   Updated: 2022/01/10 22:13:16 by noguen           ###   ########.fr       */
+/*   Updated: 2022/01/12 21:11:23 by noguen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ typedef struct		s_tex {
 	int				*sand;
 	int				*wall;
     int             *object;
+    int             *black;
 }					t_tex;
 
 typedef struct		s_player {
@@ -94,6 +95,7 @@ typedef struct		s_player {
 	int				frame;
 	int				direction;
 	int				*img;
+    int             win_flag;
 }					t_player;
 
 typedef struct		s_key {
@@ -141,6 +143,8 @@ int				parse(t_all *s, char *map);
 
 /*about tool*/
 int				tool_strlen(char* line);
+int             tool_get_digit_count(long int n);
+char            *tool_itoa(int n);
 
 /*about draw_utils*/
 void			draw_put_image(t_all *s, void *img_ptr, int x, int y);
@@ -156,8 +160,15 @@ void			draw_player(t_all *s);
 /*about draw_exit*/
 void            draw_exit(t_all *s);
 
+/*about draw_end*/
+void            draw_end(t_all *s);
+
+/*about draw_point*/
+void            draw_point(t_all *s);
+
 /*about exit*/
 void            find_exit(t_all *s);
+void            win_exit(t_all *s);
 
 /*about intro*/
 void			intro(t_all *s);

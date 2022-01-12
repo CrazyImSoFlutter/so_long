@@ -20,6 +20,8 @@ SRC_DRAW = draw_player.c\
 		   draw_tiles.c\
 		   draw_utils.c\
 		   draw_exit.c\
+		   draw_point.c\
+		   draw_end.c\
 
 SRC_GAME = intro.c\
 		   object.c\

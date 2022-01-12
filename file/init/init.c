@@ -6,7 +6,7 @@
 /*   By: nogeun <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 23:47:03 by nogeun            #+#    #+#             */
-/*   Updated: 2022/01/10 22:20:30 by noguen           ###   ########.fr       */
+/*   Updated: 2022/01/12 21:18:30 by noguen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,15 +47,17 @@ void	init_screen(t_all *s, char **argv)
 	s->mlx.ptr = mlx_init();
 	if (parse(s, argv[1]) == -1)
 		exit(0);
+
 	supplement_input_map(s);
+
 	pos_player(s);
 	tex_input(s);
     object_count(s);
     find_exit(s);
 	s->player.img = s->tex.player_left[0];
+    printf("%d %d", s->win.x, s->win.y);
 	s->win.ptr = mlx_new_window(s->mlx.ptr, s->win.x, s->win.y, "so_long");
 	s->img.ptr = mlx_new_image(s->mlx.ptr, s->win.x, s->win.y);
-
 }
 
 int		main_loop(t_all *s)
@@ -63,14 +65,29 @@ int		main_loop(t_all *s)
 	if (s->win.intro_flag)
 		intro(s);
 	else {
+        draw_point(s);
 		if (s->win.tile_flag)
 			draw_tiles(s);
         if (s->map.exit_flag)
             draw_exit(s);
-		draw_player(s);
+        if (s->player.win_flag == 0)
+		    draw_player(s);
 	}
-	key_update(s);
-    object_get(s);
+    if (s->player.win_flag == 0)
+    {
+    	key_update(s);
+        object_get(s);
+        win_exit(s);
+    }
+    else if (s->player.win_flag == 1)
+    {
+        if (s->win.frame != 400)
+            draw_end(s);
+    }
+    else
+    {
+
+    }
 	return 0;
 }
 
