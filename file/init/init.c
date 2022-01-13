@@ -6,7 +6,7 @@
 /*   By: nogeun <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 23:47:03 by nogeun            #+#    #+#             */
-/*   Updated: 2022/01/12 21:18:30 by noguen           ###   ########.fr       */
+/*   Updated: 2022/01/13 23:59:05 by noguen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ void	init_screen(t_all *s, char **argv)
 		exit(0);
 
 	supplement_input_map(s);
-
 	pos_player(s);
 	tex_input(s);
     object_count(s);
@@ -81,12 +80,17 @@ int		main_loop(t_all *s)
     }
     else if (s->player.win_flag == 1)
     {
-        if (s->win.frame != 400)
+        if (s->win.frame != 200)
             draw_end(s);
+        else
+            draw_result(s);
     }
-    else
+    else if (s->player.win_flag == 2)
     {
-
+        if (s->win.frame != 200)
+            draw_end(s);
+        else
+            draw_result(s);
     }
 	return 0;
 }

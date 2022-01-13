@@ -6,7 +6,7 @@
 /*   By: nogeun <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 23:24:35 by nogeun            #+#    #+#             */
-/*   Updated: 2022/01/12 21:11:23 by noguen           ###   ########.fr       */
+/*   Updated: 2022/01/13 23:54:46 by noguen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ typedef struct		s_win {
 typedef struct		s_img {
 	void			*ptr;
 	int				*data;
-
 	int				width;
 	int				height;
 	int				size_l;
@@ -83,6 +82,8 @@ typedef struct		s_tex {
 	int				*wall;
     int             *object;
     int             *black;
+    int             *win;
+    int             *lose;
 }					t_tex;
 
 typedef struct		s_player {
@@ -162,6 +163,7 @@ void            draw_exit(t_all *s);
 
 /*about draw_end*/
 void            draw_end(t_all *s);
+void            draw_result(t_all *s);
 
 /*about draw_point*/
 void            draw_point(t_all *s);
