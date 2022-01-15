@@ -5,33 +5,52 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: noguen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/14 22:37:30 by noguen            #+#    #+#             */
-/*   Updated: 2022/01/15 16:16:22 by noguen           ###   ########.fr       */
+/*   Created: 2022/01/15 23:40:44 by noguen            #+#    #+#             */
+/*   Updated: 2022/01/16 00:01:43 by noguen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void    enemy_patrol(t_all *s)
+void	enemy_patrol(t_all *s)
 {
-    int i;
+	int	i;
 
-    i = -1;
-    while (++i < 3)
-    {
-        if (s->enemy[i].base_direction == VERTICAL)
-        {
-            if (s->enemy[i].direction == UP)
-                move_up_enemy(s, i);
-            else if (s->enemy[i].direction == DOWN)
-                move_down_enemy(s, i);
-        }
-        else if (s->enemy[i].base_direction == HORIZONTAL)
-        {
-            if (s->enemy[i].direction == LEFT)
-                move_left_enemy(s, i);
-            else if (s->enemy[i].direction == RIGHT)
-                move_right_enemy(s, i);
-        }
-    }
+	i = -1;
+	while (++i < 3)
+	{
+		if (s->enemy[i].base_direction == VERTICAL)
+		{
+			if (s->enemy[i].direction == UP)
+				move_up_enemy(s, i);
+			else if (s->enemy[i].direction == DOWN)
+				move_down_enemy(s, i);
+		}
+		else if (s->enemy[i].base_direction == HORIZONTAL)
+		{
+			if (s->enemy[i].direction == LEFT)
+				move_left_enemy(s, i);
+			else if (s->enemy[i].direction == RIGHT)
+				move_right_enemy(s, i);
+		}
+	}
+}
+
+void	enemy_win(t_all *s)
+{
+	int	i;
+
+	i = -1;
+	while (++i < 3)
+	{
+		if (s->player.pos_y >= s->enemy[i].pos_y - 32
+			&& s->player.pos_y <= s->enemy[i].pos_y
+			&& s->player.pos_x >= s->enemy[i].pos_x - 32
+			&& s->player.pos_x <= s->enemy[i].pos_x + 32)
+		{
+			s->player.win_flag = 2;
+			s->win.frame = 0;
+			break ;
+		}
+	}
 }

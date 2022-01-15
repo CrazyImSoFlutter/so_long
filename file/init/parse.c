@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nogeun <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: noguen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/09 21:00:05 by nogeun            #+#    #+#             */
-/*   Updated: 2021/10/10 00:50:32 by nogeun           ###   ########.fr       */
+/*   Created: 2022/01/16 00:12:49 by noguen            #+#    #+#             */
+/*   Updated: 2022/01/16 00:32:41 by noguen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,17 @@ void	parse_longest_line(t_all *s, char *map)
 	ret = 1;
 	fd = open(map, O_RDONLY);
 	if (fd == -1)
-		printf("error");
+		printf("error code : 1\n");
 	while (ret == 1)
 	{
 		ret = get_next_line(fd, &line);
-		if (line[0] == ' ' || line[0] == '1')
-		{
+		if (line[0] == '1')
 			tmp = tool_strlen(line);
-			s->map.y++;
+		else
+		{
+			break ;
 		}
+		s->map.y++;
 		if (s->map.x <= tmp)
 			s->map.x = tmp;
 		free(line);
@@ -38,29 +40,29 @@ void	parse_longest_line(t_all *s, char *map)
 	close(fd);
 }
 
-int		parse_set_map(t_all *s)
+int	parse_set_map(t_all *s)
 {
-	int		j;
+	int	j;
 
 	j = -1;
-	if (!(s->map.map = malloc(sizeof(char *) * (s->map.y + 2))))
+	s->map.map = malloc(sizeof(char *) * (s->map.y + 2));
+	if (s->map.map == NULL)
 		return (-1);
 	while (++j < s->map.y + 2)
 	{
-		if (!(s->map.map[j] = malloc(sizeof(char) * (s->map.x + 1))))
+		s->map.map[j] = malloc(sizeof(char) * (s->map.x + 1));
+		if (s->map.map[j] == NULL)
 			return (-1);
 	}
 	j = -1;
 	while (++j < s->map.y + 2)
-	{
 		s->map.map[j][0] = '\0';
-	}
 	return (0);
 }
 
-int		parse_input_map(t_all *s, char *line, int *j)
+int	parse_input_map(t_all *s, char *line, int *j)
 {
-	int		k;
+	int	k;
 
 	if (s->map.map == NULL)
 		s->err.n = parse_set_map(s);
@@ -74,7 +76,7 @@ int		parse_input_map(t_all *s, char *line, int *j)
 	return (0);
 }
 
-int		parse(t_all *s, char *map)
+int	parse(t_all *s, char *map)
 {
 	char	*line;
 	int		fd;
@@ -86,7 +88,7 @@ int		parse(t_all *s, char *map)
 	fd = open(map, O_RDONLY);
 	j = 0;
 	if (fd == -1)
-		printf("error");
+		printf("error code : 1\n");
 	while (ret == 1)
 	{
 		ret = get_next_line(fd, &line);

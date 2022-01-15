@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   tool.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nogeun <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: noguen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/10 00:15:17 by nogeun            #+#    #+#             */
-/*   Updated: 2022/01/12 18:46:21 by noguen           ###   ########.fr       */
+/*   Created: 2022/01/16 00:39:02 by noguen            #+#    #+#             */
+/*   Updated: 2022/01/16 00:40:31 by noguen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int		tool_strlen(char* line)
+int	tool_strlen(char *line)
 {
-	int		n;
-	
+	int	n;
+
 	n = 0;
 	while (*line)
 	{
@@ -25,7 +25,7 @@ int		tool_strlen(char* line)
 	return (n);
 }
 
-int		tool_get_digit_count(long int n)
+int	tool_get_digit_count(long int n)
 {
 	int		i;
 
@@ -50,7 +50,8 @@ char	*tool_itoa(int n)
 	digit_count = tool_get_digit_count(long_n);
 	if (long_n < 0)
 		digit_count++;
-	if (!(str = malloc((digit_count + 1) * sizeof(char))))
+	str = malloc((digit_count + 1) * sizeof(char));
+	if (str == NULL)
 		return (NULL);
 	str[0] = '0';
 	if (long_n < 0)
@@ -60,7 +61,7 @@ char	*tool_itoa(int n)
 	}
 	str[digit_count] = '\0';
 	while (((digit_count >= 0 && str[0] != '-')
-				|| (digit_count > 0 && str[0] == '-')) && long_n != 0)
+			|| (digit_count > 0 && str[0] == '-')) && long_n != 0)
 	{
 		str[digit_count - 1] = (long_n % 10) + '0';
 		long_n /= 10;

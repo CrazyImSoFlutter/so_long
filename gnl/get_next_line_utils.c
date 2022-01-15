@@ -6,13 +6,13 @@
 /*   By: hnoh <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 09:31:31 by hnoh              #+#    #+#             */
-/*   Updated: 2021/01/18 12:24:38 by nogeun           ###   ########.fr       */
+/*   Updated: 2022/01/16 00:44:47 by noguen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t		ft_strlen(const char *s)
+size_t	ft_strlen(const char *s)
 {
 	size_t	i;
 
@@ -22,7 +22,7 @@ size_t		ft_strlen(const char *s)
 	return (i);
 }
 
-size_t		ft_strlcpy(char *dest, const char *src, size_t dstsize)
+size_t	ft_strlcpy(char *dest, const char *src, size_t dstsize)
 {
 	size_t	src_len;
 	size_t	i;
@@ -46,7 +46,7 @@ size_t		ft_strlcpy(char *dest, const char *src, size_t dstsize)
 	return (src_len);
 }
 
-size_t		ft_strlcat(char *dest, const char *src, size_t dstsize)
+size_t	ft_strlcat(char *dest, const char *src, size_t dstsize)
 {
 	size_t	i;
 	size_t	dest_len;
@@ -66,7 +66,7 @@ size_t		ft_strlcat(char *dest, const char *src, size_t dstsize)
 	return (dest_len + src_len);
 }
 
-char		*ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*newstr;
 	int		s1_len;
@@ -75,10 +75,16 @@ char		*ft_strjoin(char *s1, char *s2)
 	if (!(s1) && !(s2))
 		return (NULL);
 	else if (!(s1) || !(s2))
-		return (!(s1) ? ft_strdup(s2) : ft_strdup(s1));
+	{
+		if (s1 == NULL)
+			return (ft_strdup(s2));
+		else
+			return (ft_strdup(s1));
+	}
 	s1_len = ft_strlen(s1);
 	s2_len = ft_strlen(s2);
-	if (!(newstr = (char *)malloc(sizeof(char) * (s1_len + s2_len + 1))))
+	newstr = (char *)malloc(sizeof(char) * (s1_len + s2_len + 1));
+	if (newstr == NULL)
 		return (NULL);
 	ft_strlcpy(newstr, s1, s1_len + 1);
 	free(s1);
@@ -86,7 +92,7 @@ char		*ft_strjoin(char *s1, char *s2)
 	return (newstr);
 }
 
-char		*ft_strdup(char *s1)
+char	*ft_strdup(char *s1)
 {
 	char	*result;
 	int		i;

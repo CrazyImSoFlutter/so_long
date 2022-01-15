@@ -6,7 +6,7 @@
 /*   By: nogeun <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 23:24:35 by nogeun            #+#    #+#             */
-/*   Updated: 2022/01/15 16:30:47 by noguen           ###   ########.fr       */
+/*   Updated: 2022/01/16 00:27:27 by noguen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,6 +151,19 @@ void			init_screen(t_all *s, char **argv);
 void			init_loop(t_all *s);
 void			init_so_long(t_all *s, char** argv);
 
+/*about init2*/
+void            init_enemy(t_all *s);
+void			init_set_enemy(t_all *s, int *n);
+void			init_set_enemy_var(t_all *s, int i);
+
+/*about init_variable*/
+void			init_win_var(t_all *s);
+void			init_map_var(t_all *s);
+void			init_player_var(t_all *s);
+void			init_key_var(t_all *s);
+void			init_variable(t_all *s);
+		
+
 /*about tex*/
 void			*tex_input_xpm(t_all *s, char *file);
 void			tex_input(t_all *s);
@@ -173,7 +186,8 @@ void            tool_srand(t_all *s, int seed);
 
 /*about draw_utils*/
 void			draw_put_image(t_all *s, void *img_ptr, int x, int y);
-void            draw_two(t_all *s, void *first, void *second, int y, int x);
+void			draw_tile_again(t_all *s, int pos_y, int pos_x, int dir);
+void			draw_check(t_all *s, int *a, int *visit, int i);
 
 /*about draw_tiles*/
 void			draw_put_image_tile(t_all *s, int y, int x);
@@ -233,7 +247,6 @@ void            key_act_quit(t_all *s);
 void			pos_player(t_all *s);
 
 /*about enemy*/
-void            set_enemy(t_all *s);
 void            move_up_enemy(t_all *s, int n);
 void            move_down_enemy(t_all *s, int n);
 void            move_left_enemy(t_all *s, int n);
@@ -241,5 +254,10 @@ void            move_right_enemy(t_all *s, int n);
 
 /*about enemy2*/
 void            enemy_patrol(t_all *s);
+void            enemy_win(t_all *s);
 
+/*about main_loop*/
+int				main_loop(t_all *s);
+void			game_play(t_all *s);
+void			game_end(t_all *s);
 #endif

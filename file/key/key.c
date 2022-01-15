@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   key.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nogeun <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: noguen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/12 00:28:14 by nogeun            #+#    #+#             */
-/*   Updated: 2022/01/14 23:16:57 by noguen           ###   ########.fr       */
+/*   Created: 2022/01/16 00:33:46 by noguen            #+#    #+#             */
+/*   Updated: 2022/01/16 00:37:43 by noguen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int		key_pressed(int k, t_all *s)
+int	key_pressed(int k, t_all *s)
 {
 	if (k == KEY_W)
 		s->key.w = 1;
@@ -26,12 +26,12 @@ int		key_pressed(int k, t_all *s)
 		s->key.n = 1;
 	else if (k == KEY_SPACE)
 		s->key.space = 1;
-    else if (k == KEY_Q || k == KEY_ESC)
-        s->key.q = 1;
+	else if (k == KEY_Q || k == KEY_ESC)
+		s->key.q = 1;
 	return (0);
 }
 
-int		key_released(int k, t_all *s)
+int	key_released(int k, t_all *s)
 {
 	if (k == KEY_W)
 		s->key.w = 0;
@@ -43,15 +43,14 @@ int		key_released(int k, t_all *s)
 		s->key.d = 0;
 	else if (k == KEY_SPACE)
 		s->key.space = 0;
-    else if (k == KEY_Q || k == KEY_ESC)
-        s->key.q = 0;
-	s->player.frame = 1;
+	else if (k == KEY_Q || k == KEY_ESC)
+		s->key.q = 0;
 	return (0);
 }
 
-int		key_update(t_all *s)
+int	key_update(t_all *s)
 {
-    key_act_quit(s);
+	key_act_quit(s);
 	key_act_up(s);
 	key_act_left(s);
 	key_act_down(s);

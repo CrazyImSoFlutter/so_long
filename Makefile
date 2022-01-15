@@ -29,8 +29,11 @@ SRC_GAME = intro.c\
 		   so_long.c\
 		   enemy.c\
 		   enemy2.c\
+		   main_loop.c\
 
 SRC_INIT = init.c\
+		   init2.c\
+		   init_variable.c\
 		   parse.c\
 		   pos.c\
 		   supplement.c\

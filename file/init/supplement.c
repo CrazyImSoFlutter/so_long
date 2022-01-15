@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   supplement.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nogeun <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: noguen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/11 23:39:42 by nogeun            #+#    #+#             */
-/*   Updated: 2021/10/14 16:35:56 by nogeun           ###   ########.fr       */
+/*   Created: 2022/01/16 00:12:43 by noguen            #+#    #+#             */
+/*   Updated: 2022/01/16 00:14:20 by noguen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int		supplement_set_map(t_all *s)
+int	supplement_set_map(t_all *s)
 {
-	int		i;
-	int		j;
+	int	i;
+	int	j;
 
 	i = -1;
 	s->map.sup = malloc(sizeof(char *) * 10);

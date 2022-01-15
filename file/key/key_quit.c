@@ -5,17 +5,17 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: noguen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/14 15:57:31 by noguen            #+#    #+#             */
-/*   Updated: 2022/01/14 23:16:24 by noguen           ###   ########.fr       */
+/*   Created: 2022/01/16 00:34:38 by noguen            #+#    #+#             */
+/*   Updated: 2022/01/16 00:34:41 by noguen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void    key_act_quit(t_all *s)
+void	key_act_quit(t_all *s)
 {
-    if (s->key.q == 1)
-    {
-        exit(0);
-    }
+	if (s->key.q == 1)
+	{
+		exit(0);
+	}
 }
