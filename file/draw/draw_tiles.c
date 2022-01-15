@@ -6,7 +6,7 @@
 /*   By: nogeun <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 01:11:15 by nogeun            #+#    #+#             */
-/*   Updated: 2022/01/10 22:27:35 by noguen           ###   ########.fr       */
+/*   Updated: 2022/01/15 14:48:50 by noguen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,17 @@ void	draw_tiles(t_all *s)
 	s->win.tile_flag = 0;
 }
 
+void    draw_wall(t_all *s)
+{
+    int i;
+    int j;
 
+    i = 0;
+    while (++i < 9)
+    {
+        j = 0;
+        while (++j <19)
+        	if (s->map.sup[y][x] == '1')
+                draw_two(s, s->tex.sand, s->tex.wall, y, x);
+    }
+}

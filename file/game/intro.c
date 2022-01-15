@@ -6,7 +6,7 @@
 /*   By: nogeun <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 19:41:32 by nogeun            #+#    #+#             */
-/*   Updated: 2021/10/14 01:04:43 by nogeun           ###   ########.fr       */
+/*   Updated: 2022/01/14 22:30:20 by noguen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,24 +18,24 @@ void	intro(t_all *s)
 	int		index;
 
 	index = 0;
-	if (s->win.frame >= 0 && s->win.frame < 250)
+	if (s->win.frame == 0)
 		index = 0;
-	else if (s->win.frame >= 250 && s->win.frame < 500)
+	else if (s->win.frame == 250)
 		index = 1;
-	else if (s->win.frame >= 500 && s->win.frame < 750)
+	else if (s->win.frame == 500)
 		index = 2;
-	else if (s->win.frame >= 750 && s->win.frame < 1000)
+	else if (s->win.frame == 750)
 		index = 3;
-	else if (s->win.frame >= 1000 && s->win.frame < 1250)
+	else if (s->win.frame == 1000)
 		index = 4;
-	else if (s->win.frame >= 1250 && s->win.frame < 1500)
+	else if (s->win.frame == 1250)
 		index = 5;
-	else if (s->win.frame >= 1500 && s->win.frame < 1750)
+	else if (s->win.frame == 1500)
 		index = 6;
-
 	img = s->tex.intro[index];
-	draw_put_image(s, img, 120, 280);
+    if (s->win.frame % 250 == 0)
+	    draw_put_image(s, img, 120, 280);
 	s->win.frame++;
-	if (s->win.frame >= 1750)
+	if (s->win.frame == 1750)
 		s->win.intro_flag = 0;
 }

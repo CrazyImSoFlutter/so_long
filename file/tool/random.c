@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_point.c                                       :+:      :+:    :+:   */
+/*   random.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: noguen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/11 23:25:52 by noguen            #+#    #+#             */
-/*   Updated: 2022/01/12 21:03:45 by noguen           ###   ########.fr       */
+/*   Created: 2022/01/14 12:14:19 by noguen            #+#    #+#             */
+/*   Updated: 2022/01/14 23:04:48 by noguen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void    draw_point(t_all *s)
+void    tool_srand(t_all *s, int seed)
 {
-    char *a;
-    char *b;
+    s->holdrand = (long)seed;
+}
 
-    a = tool_itoa(s->player.move);
-    b = "player move: ";
-    draw_put_image(s, s->tex.black, 640, 0);
-    draw_put_image(s, s->tex.black, 640, 64);
-    draw_put_image(s, s->tex.black, 640, 128);
-    mlx_string_put(s->mlx.ptr, s->win.ptr, 20, 700, 0xFFFFFF, b);
-    mlx_string_put(s->mlx.ptr, s->win.ptr, 110, 700, 0xFFFFFF, a);
+int tool_rand(t_all *s)
+{
+    s->holdrand = s->holdrand * 214013L + 2531011L;
+    return ((s->holdrand >> 16) & 0x7fff);
 }

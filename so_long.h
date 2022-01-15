@@ -6,7 +6,7 @@
 /*   By: nogeun <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 23:24:35 by nogeun            #+#    #+#             */
-/*   Updated: 2022/01/13 23:54:46 by noguen           ###   ########.fr       */
+/*   Updated: 2022/01/14 22:59:38 by noguen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,14 @@
 # define KEY_SPACE 49
 # define KEY_Q 12
 # define KEY_ESC 53
+# define P_MOVE_SPEED 3
+# define E_MOVE_SPEED 4
+# define VERTICAL 0
+# define HORIZONTAL 1
+# define LEFT 0
+# define RIGHT 1
+# define UP 2
+# define DOWN 3
 
 typedef struct		s_mlx {
 	void			*ptr;
@@ -73,10 +81,8 @@ typedef struct		s_tex {
 	int				*intro[8];
 	int				*player_left[8];
 	int				*player_right[8];
-	int				*player_up[8];
-	int				*player_down[8];
-	int				*enemy_left[4];
-	int				*enemy_right[4];
+	int				*enemy_left[8];
+	int				*enemy_right[8];
     int             *exit[8];
 	int				*sand;
 	int				*wall;
@@ -92,12 +98,23 @@ typedef struct		s_player {
     int             pos_map_y;
     int             pos_map_x;
     int             move;
-	int				move_speed;
 	int				frame;
 	int				direction;
 	int				*img;
     int             win_flag;
 }					t_player;
+
+typedef struct      s_enemy {
+    int             pos_y;
+    int             pos_x;
+    int             pos_map_y;
+    int             pos_map_x;
+    int             base_direction;
+    int             direction;
+    int             move_speed;
+    int             frame;
+    int             *img;
+}                   t_enemy;
 
 typedef struct		s_key {
 	int				w;
@@ -123,7 +140,9 @@ typedef struct		s_all {
 	t_player		player;
 	t_key			key;
 	t_err			err;
+    t_enemy         enemy[3];
     int             object_count;
+    long            holdrand;
 }					t_all;
 
 /*about init*/
@@ -135,6 +154,9 @@ void			init_so_long(t_all *s, char** argv);
 /*about tex*/
 void			*tex_input_xpm(t_all *s, char *file);
 void			tex_input(t_all *s);
+void            tex_input_player(t_all *s);
+void            tex_input_enemy(t_all *s);
+void            tex_input_exit(t_all *s);
 
 /*about parse*/
 void			parse_longest_line(t_all *s, char *map);
@@ -146,6 +168,8 @@ int				parse(t_all *s, char *map);
 int				tool_strlen(char* line);
 int             tool_get_digit_count(long int n);
 char            *tool_itoa(int n);
+int             tool_rand(t_all *s);
+void            tool_srand(t_all *s, int seed);
 
 /*about draw_utils*/
 void			draw_put_image(t_all *s, void *img_ptr, int x, int y);
@@ -158,6 +182,8 @@ void			draw_tiles(t_all *s);
 /*about draw_player*/
 void			draw_player(t_all *s);
 
+/*about draw_enemy*/
+void            draw_enemy(t_all *s, int n);
 /*about draw_exit*/
 void            draw_exit(t_all *s);
 
@@ -167,6 +193,10 @@ void            draw_result(t_all *s);
 
 /*about draw_point*/
 void            draw_point(t_all *s);
+
+/*about set_img*/
+void            set_player_image(t_all *s);
+void            set_enemy_image(t_all *s, int n);
 
 /*about exit*/
 void            find_exit(t_all *s);
@@ -201,4 +231,13 @@ void            key_act_quit(t_all *s);
 /*about pos*/
 void			pos_player(t_all *s);
 
+/*about enemy*/
+void            set_enemy(t_all *s);
+void            move_up_enemy(t_all *s, int n);
+void            move_down_enemy(t_all *s, int n);
+void            move_left_enemy(t_all *s, int n);
+void            move_right_enemy(t_all *s, int n);
+
+/*about enemy2*/
+void            enemy_patrol(t_all *s);
 #endif

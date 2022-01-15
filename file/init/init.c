@@ -6,7 +6,7 @@
 /*   By: nogeun <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 23:47:03 by nogeun            #+#    #+#             */
-/*   Updated: 2022/01/13 23:59:05 by noguen           ###   ########.fr       */
+/*   Updated: 2022/01/15 14:45:42 by noguen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ void	init_variables(t_all *s)
 	s->win.frame = 0;
 	s->player.pos_y = 0;
 	s->player.pos_x = 0;
-	s->player.move_speed = 2;
 	s->player.frame = 1;
 	s->player.img = NULL;
     s->player.move = 0;
+    s->player.win_flag = 0;
 	s->key.w = 0;
 	s->key.s = 0;
 	s->key.a = 0;
@@ -44,23 +44,30 @@ void	init_variables(t_all *s)
 
 void	init_screen(t_all *s, char **argv)
 {
-	s->mlx.ptr = mlx_init();
-	if (parse(s, argv[1]) == -1)
-		exit(0);
+    int i;
 
+	s->mlx.ptr = mlx_init();
+	i = parse(s, argv[1]);
+    if (i == -1)
+	    exit(0);
 	supplement_input_map(s);
 	pos_player(s);
 	tex_input(s);
     object_count(s);
     find_exit(s);
+    set_enemy(s);
+    for (int i = 0; i < 3; i++)
+        printf("%d %d\n", s->enemy[i].pos_y, s->enemy[i].pos_x);
 	s->player.img = s->tex.player_left[0];
-    printf("%d %d", s->win.x, s->win.y);
 	s->win.ptr = mlx_new_window(s->mlx.ptr, s->win.x, s->win.y, "so_long");
 	s->img.ptr = mlx_new_image(s->mlx.ptr, s->win.x, s->win.y);
 }
 
 int		main_loop(t_all *s)
 {
+    int i;
+
+    i = 3;
 	if (s->win.intro_flag)
 		intro(s);
 	else {
@@ -70,10 +77,15 @@ int		main_loop(t_all *s)
         if (s->map.exit_flag)
             draw_exit(s);
         if (s->player.win_flag == 0)
+        {
 		    draw_player(s);
+            for (i = 0; i < 3; i++)
+                draw_enemy(s, i);
+        }
 	}
     if (s->player.win_flag == 0)
     {
+        enemy_patrol(s);
     	key_update(s);
         object_get(s);
         win_exit(s);
@@ -92,7 +104,7 @@ int		main_loop(t_all *s)
         else
             draw_result(s);
     }
-	return 0;
+    return 0;
 }
 
 void	init_loop(t_all *s)
