@@ -15,13 +15,12 @@ SRC_PATH = ./file/
 SRC_GNL = get_next_line.c\
 		  get_next_line_utils.c\
 
-SRC_DRAW = draw_player.c\
+SRC_DRAW = draw_character.c\
 		   draw_tiles.c\
 		   draw_utils.c\
 		   draw_exit.c\
 		   draw_point.c\
 		   draw_end.c\
-		   draw_enemy.c\
 		   set_img.c\
 
 SRC_GAME = intro.c\

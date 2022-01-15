@@ -6,7 +6,7 @@
 /*   By: noguen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 12:10:27 by noguen            #+#    #+#             */
-/*   Updated: 2022/01/15 14:42:18 by noguen           ###   ########.fr       */
+/*   Updated: 2022/01/15 16:30:09 by noguen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,13 @@ void    set_enemy(t_all *s)
         s->enemy[i].pos_x = x * 64 + 32;
         s->enemy[i].base_direction = tool_rand(s) % 2;
         s->enemy[i].direction = tool_rand(s) % 2;
+        if (s->enemy[i].base_direction == 0)
+        {
+            if (s->enemy[i].direction == 0)
+                s->enemy[i].direction = UP;
+            else
+                s->enemy[i].direction = DOWN;
+        }
         s->enemy[i].move_speed = 3;
         s->enemy[i].frame = 0;
         s->enemy[i].img = s->tex.enemy_left[0];
@@ -54,10 +61,9 @@ void    move_up_enemy(t_all *s, int n)
     j = s->enemy[n].pos_x / 64;
     s->enemy[n].frame = (s->enemy[n].frame + 1) % 32;
     if (s->map.sup[i][j] != '1')
-    {
         s->enemy[n].pos_y -= E_MOVE_SPEED;
+    else
         s->enemy[n].direction = DOWN;
-    }
     precise_i = s->enemy[n].pos_y / 64;
     precise_j = s->enemy[n].pos_x / 64;
     if (s->enemy[n].pos_map_y != precise_i ||
@@ -80,10 +86,9 @@ void    move_down_enemy(t_all *s, int n)
     j = s->enemy[n].pos_x / 64;
     s->enemy[n].frame = (s->enemy[n].frame + 1) % 32;
     if (s->map.sup[i][j] != '1')
-    {
         s->enemy[n].pos_y += E_MOVE_SPEED;
+    else
         s->enemy[n].direction = UP;
-    }
     precise_i = s->enemy[n].pos_y / 64;
     precise_j = s->enemy[n].pos_x / 64;
     if (s->enemy[n].pos_map_y != precise_i ||
@@ -106,10 +111,9 @@ void    move_left_enemy(t_all *s, int n)
     j = (s->enemy[n].pos_x - 20 - E_MOVE_SPEED) / 64;
     s->enemy[n].frame = (s->enemy[n].frame + 1) % 32;
     if (s->map.sup[i][j] != '1')
-    {
         s->enemy[n].pos_y += E_MOVE_SPEED;
+    else
         s->enemy[n].direction = RIGHT;
-    }
     precise_i = s->enemy[n].pos_y / 64;
     precise_j = s->enemy[n].pos_x / 64;
     if (s->enemy[n].pos_map_y != precise_i ||
@@ -132,10 +136,9 @@ void    move_right_enemy(t_all *s, int n)
     j = (s->enemy[n].pos_x + 20 + E_MOVE_SPEED) / 64;
     s->enemy[n].frame = (s->enemy[n].frame + 1) % 32;
     if (s->map.sup[i][j] != '1')
-    {
         s->enemy[n].pos_y -= E_MOVE_SPEED;
+    else
         s->enemy[n].direction = LEFT;
-    }
     precise_i = s->enemy[n].pos_y / 64;
     precise_j = s->enemy[n].pos_x / 64;
     if (s->enemy[n].pos_map_y != precise_i ||

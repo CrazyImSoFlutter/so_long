@@ -6,7 +6,7 @@
 /*   By: nogeun <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 23:47:03 by nogeun            #+#    #+#             */
-/*   Updated: 2022/01/15 14:45:42 by noguen           ###   ########.fr       */
+/*   Updated: 2022/01/15 15:47:08 by noguen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,11 +77,7 @@ int		main_loop(t_all *s)
         if (s->map.exit_flag)
             draw_exit(s);
         if (s->player.win_flag == 0)
-        {
-		    draw_player(s);
-            for (i = 0; i < 3; i++)
-                draw_enemy(s, i);
-        }
+            draw_character(s);
 	}
     if (s->player.win_flag == 0)
     {

@@ -6,7 +6,7 @@
 /*   By: nogeun <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 23:24:35 by nogeun            #+#    #+#             */
-/*   Updated: 2022/01/14 22:59:38 by noguen           ###   ########.fr       */
+/*   Updated: 2022/01/15 16:30:47 by noguen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 # define KEY_Q 12
 # define KEY_ESC 53
 # define P_MOVE_SPEED 3
-# define E_MOVE_SPEED 4
+# define E_MOVE_SPEED 2
 # define VERTICAL 0
 # define HORIZONTAL 1
 # define LEFT 0
@@ -179,11 +179,12 @@ void            draw_two(t_all *s, void *first, void *second, int y, int x);
 void			draw_put_image_tile(t_all *s, int y, int x);
 void			draw_tiles(t_all *s);
 
-/*about draw_player*/
-void			draw_player(t_all *s);
+/*about draw_character*/
+void			draw_player_tile(t_all *s);
+void            draw_enemy_tile(t_all *s);
+void            draw_player_enemy(t_all *s);
+void            draw_character(t_all *s);
 
-/*about draw_enemy*/
-void            draw_enemy(t_all *s, int n);
 /*about draw_exit*/
 void            draw_exit(t_all *s);
 
@@ -240,4 +241,5 @@ void            move_right_enemy(t_all *s, int n);
 
 /*about enemy2*/
 void            enemy_patrol(t_all *s);
+
 #endif
