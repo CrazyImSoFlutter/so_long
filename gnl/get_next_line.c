@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hnoh <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: noguen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/18 09:28:57 by hnoh              #+#    #+#             */
-/*   Updated: 2022/01/16 00:47:50 by noguen           ###   ########.fr       */
+/*   Created: 2022/01/16 21:54:44 by noguen            #+#    #+#             */
+/*   Updated: 2022/01/16 22:03:34 by noguen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ int	is_newline(char *backup)
 
 int	split_line(char **backup, char **line, int cut_idx)
 {
-	char	*temp;
-	int		len;
+	char			*temp;
+	int				len;
 
 	(*backup)[cut_idx] = '\0';
 	*line = ft_strdup(*backup);
@@ -48,18 +48,21 @@ int	split_line(char **backup, char **line, int cut_idx)
 
 int	return_all(char **backup, char **line, int read_size)
 {
-	int	cut_idx;
+	int				cut_idx;
 
 	if (read_size < 0)
 		return (-1);
-	cut_idx = is_newline(*backup);
-	if (*backup && cut_idx >= 0)
-		return (split_line(backup, line, cut_idx));
-	else if (*backup)
+	if (*backup)
 	{
-		*line = *backup;
-		*backup = 0;
-		return (0);
+		cut_idx = is_newline(*backup);
+		if (cut_idx >= 0)
+			return (split_line(backup, line, cut_idx));
+		else
+		{
+			*line = *backup;
+			*backup = 0;
+			return (0);
+		}
 	}
 	*line = ft_strdup("");
 	return (0);
@@ -74,8 +77,11 @@ int	get_next_line(int fd, char **line)
 
 	if ((fd < 0) || (line == 0) || (BUFFER_SIZE <= 0))
 		return (-1);
-	while ((read_size = read(fd, buf, BUFFER_SIZE)) > 0)
+	while (1)
 	{
+		read_size = read(fd, buf, BUFFER_SIZE);
+		if (read_size <= 0)
+			break ;
 		buf[read_size] = '\0';
 		backup[fd] = ft_strjoin(backup[fd], buf);
 		cut_idx = is_newline(backup[fd]);

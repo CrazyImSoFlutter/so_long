@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hnoh <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: noguen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/18 09:31:31 by hnoh              #+#    #+#             */
-/*   Updated: 2022/01/16 00:44:47 by noguen           ###   ########.fr       */
+/*   Created: 2022/01/16 21:55:19 by noguen            #+#    #+#             */
+/*   Updated: 2022/01/16 22:06:50 by noguen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ char	*ft_strjoin(char *s1, char *s2)
 		return (NULL);
 	else if (!(s1) || !(s2))
 	{
-		if (s1 == NULL)
+		if (!s1)
 			return (ft_strdup(s2));
 		else
 			return (ft_strdup(s1));
@@ -84,7 +84,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	s1_len = ft_strlen(s1);
 	s2_len = ft_strlen(s2);
 	newstr = (char *)malloc(sizeof(char) * (s1_len + s2_len + 1));
-	if (newstr == NULL)
+	if (!newstr)
 		return (NULL);
 	ft_strlcpy(newstr, s1, s1_len + 1);
 	free(s1);
