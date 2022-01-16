@@ -6,27 +6,33 @@
 /*   By: noguen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 00:11:36 by noguen            #+#    #+#             */
-/*   Updated: 2022/01/16 00:28:54 by noguen           ###   ########.fr       */
+/*   Updated: 2022/01/17 01:36:48 by noguen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	init_screen(t_all *s, char **argv)
+void	init_parse(t_all *s, char **argv)
 {
-	int	i;
-
-	s->mlx.ptr = mlx_init();
-	i = parse(s, argv[1]);
-	if (i == -1)
-		exit(0);
+	s->err.n = parse(s, argv[1]);
+	//s->err.n = parse_check_all(s);
 	supplement_input_map(s);
+	//s->err.n = parse_check_win(s);
+}
+
+void	init_element(t_all *s)
+{
 	pos_player(s);
 	tex_input(s);
 	object_count(s);
 	find_exit(s);
 	init_enemy(s);
 	s->player.img = s->tex.player_left[0];
+}
+
+void	init_screen(t_all *s)
+{
+	s->mlx.ptr = mlx_init();
 	s->win.ptr = mlx_new_window(s->mlx.ptr, s->win.x, s->win.y, "so_long");
 	s->img.ptr = mlx_new_image(s->mlx.ptr, s->win.x, s->win.y);
 }
@@ -42,6 +48,9 @@ void	init_loop(t_all *s)
 void	init_so_long(t_all *s, char **argv)
 {
 	init_variable(s);
-	init_screen(s, argv);
+	init_screen(s);
+	init_parse(s, argv);
+	init_element(s);
+
 	init_loop(s);
 }

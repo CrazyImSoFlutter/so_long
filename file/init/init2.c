@@ -6,7 +6,7 @@
 /*   By: noguen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 23:51:45 by noguen            #+#    #+#             */
-/*   Updated: 2022/01/16 00:29:14 by noguen           ###   ########.fr       */
+/*   Updated: 2022/01/17 01:12:48 by noguen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	init_enemy(t_all *s)
 {
 	int	i;
 
+	s->init_max = 0;
 	i = -1;
 	tool_srand(s, s->object_count);
 	while (++i < 3)
@@ -29,6 +30,8 @@ void	init_set_enemy(t_all *s, int *n)
 	int	pos;
 	int	i;
 
+	if (++(s->init_max) == 100)
+		tool_error(-30);
 	i = *n;
 	pos = tool_rand(s) % 200;
 	y = pos / 20;
@@ -41,7 +44,26 @@ void	init_set_enemy(t_all *s, int *n)
 	}
 	s->enemy[i].pos_y = y * 64 + 32;
 	s->enemy[i].pos_x = x * 64 + 32;
+	if (check_init_enemy(s, n) == 0)
+		return ;
 	init_set_enemy_var(s, i);
+}
+
+int	check_init_enemy(t_all *s, int *n)
+{
+	int	i;
+
+	i = *n;
+	while (--i >= 0)
+	{
+		if (s->enemy[*n].pos_y == s->enemy[i].pos_y
+			&& s->enemy[*n].pos_x == s->enemy[i].pos_x)
+		{
+			(*n)--;
+			return (0);
+		}
+	}
+	return (1);
 }
 
 void	init_set_enemy_var(t_all *s, int i)

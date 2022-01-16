@@ -6,7 +6,7 @@
 /*   By: noguen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 23:41:58 by noguen            #+#    #+#             */
-/*   Updated: 2022/01/16 00:02:02 by noguen           ###   ########.fr       */
+/*   Updated: 2022/01/16 23:33:23 by noguen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 int	main(int argc, char **argv)
 {
 	t_all	s;
-	int		i;
 
-	i = argc;
+	if (argc != 2)
+		tool_error(-1);
 	init_so_long(&s, argv);
 }

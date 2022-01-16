@@ -6,7 +6,7 @@
 /*   By: noguen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 23:29:15 by noguen            #+#    #+#             */
-/*   Updated: 2022/01/15 23:37:31 by noguen           ###   ########.fr       */
+/*   Updated: 2022/01/17 02:12:53 by noguen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	draw_player_tile(t_all *s)
 		if (pos_y - 1 >= 0 && pos_y - 2 >= 0)
 			draw_tile_again(s, pos_y, pos_x, -1);
 	}
+
 }
 
 void	draw_enemy_tile(t_all *s)
@@ -42,7 +43,7 @@ void	draw_enemy_tile(t_all *s)
 	int		i;
 
 	i = -1;
-	while (i++ < 3)
+	while (++i < 3)
 	{
 		pos_y = s->enemy[i].pos_y / 64;
 		pos_x = s->enemy[i].pos_x / 64;

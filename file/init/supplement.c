@@ -6,7 +6,7 @@
 /*   By: noguen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 00:12:43 by noguen            #+#    #+#             */
-/*   Updated: 2022/01/16 00:14:20 by noguen           ###   ########.fr       */
+/*   Updated: 2022/01/17 01:42:23 by noguen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ int	supplement_set_map(t_all *s)
 
 	i = -1;
 	s->map.sup = malloc(sizeof(char *) * 10);
-	if (!s->map.sup)
-		return (-1);
+	if (s->map.sup == NULL)
+		return (tool_error(-4));
 	while (++i < 10)
 	{
 		s->map.sup[i] = malloc(sizeof(char) * 20);
-		if (!s->map.sup)
-			return (-1);
+		if (s->map.sup[i] == NULL)
+			return (tool_error(-4));
 	}
 	i = -1;
 	while (++i < 10)
@@ -34,7 +34,7 @@ int	supplement_set_map(t_all *s)
 		while (++j < 20)
 			s->map.sup[i][j] = '9';
 	}
-	return (0);
+	return (1);
 }
 
 void	supplement_input_map(t_all *s)
@@ -44,7 +44,7 @@ void	supplement_input_map(t_all *s)
 	int		space_x;
 	int		space_y;
 
-	supplement_set_map(s);
+	s->err.n = supplement_set_map(s);
 	space_x = (20 - s->map.x) / 2;
 	space_y = (10 - s->map.y) / 2;
 	i = -1;

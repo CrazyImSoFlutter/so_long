@@ -34,7 +34,6 @@ SRC_GAME = intro.c\
 SRC_INIT = init.c\
 		   init2.c\
 		   init_variable.c\
-		   parse.c\
 		   pos.c\
 		   supplement.c\
 		   tex.c\
@@ -43,8 +42,13 @@ SRC_KEY = key.c\
 		  key_act.c\
 		  key_quit.c\
 
+SRC_PARSE = parse.c\
+			parse_check_map.c\
+			parse_check_win.c\
+
 SRC_TOOL = tool.c\
 		   random.c\
+		   error.c\
 
 SRCS = $(addprefix gnl/, $(SRC_GNL))\
 	   $(addprefix $(SRC_PATH)draw/, $(SRC_DRAW))\
@@ -52,6 +56,7 @@ SRCS = $(addprefix gnl/, $(SRC_GNL))\
 	   $(addprefix $(SRC_PATH)init/, $(SRC_INIT))\
 	   $(addprefix $(SRC_PATH)key/, $(SRC_KEY))\
 	   $(addprefix $(SRC_PATH)tool/, $(SRC_TOOL))\
+	   $(addprefix $(SRC_PATH)parse/, $(SRC_PARSE))\
 
 OBJS = $(SRCS:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: nogeun <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 23:24:35 by nogeun            #+#    #+#             */
-/*   Updated: 2022/01/16 00:27:27 by noguen           ###   ########.fr       */
+/*   Updated: 2022/01/17 02:01:34 by noguen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <string.h>
 # include <stdio.h>
+# include <unistd.h>
 # include "mlx/mlx.h"
 # include "gnl/get_next_line.h"
 
@@ -128,8 +129,23 @@ typedef struct		s_key {
 
 typedef struct		s_err {
 	int				n;
-	int				p;
 }					t_err;
+
+typedef struct		s_pair {
+	int				x;
+	int				y;
+}					t_pair;
+
+typedef struct		s_bfs {
+	int				dy[4];
+	int				dx[4];
+	int				visit[10][20];
+	t_pair			q[500];
+	int				q_size;
+	int				y;
+	int				x;
+	int				index;
+}					t_bfs;
 
 typedef struct		s_all {
 	t_mlx			mlx;
@@ -141,19 +157,83 @@ typedef struct		s_all {
 	t_key			key;
 	t_err			err;
     t_enemy         enemy[3];
+	t_bfs			bfs;
     int             object_count;
+	int				init_max;
     long            holdrand;
 }					t_all;
 
+/************about draw directory************/
+/*about draw_character*/
+void			draw_player_tile(t_all *s);
+void            draw_enemy_tile(t_all *s);
+void			set_order(t_all *s, int *tmp);
+void            draw_player_enemy(t_all *s);
+void            draw_character(t_all *s);
+
+/*about draw_exit*/
+void            draw_exit(t_all *s);
+
+/*about draw_tiles*/
+void			draw_put_image_tile(t_all *s, int y, int x);
+void			draw_tiles(t_all *s);
+
+/*about set_img*/
+void            set_player_image(t_all *s);
+void            set_enemy_image(t_all *s, int n);
+
+/*about draw_end*/
+void            draw_end(t_all *s);
+void            draw_result(t_all *s);
+
+/*about draw_point*/
+void            draw_point(t_all *s);
+
+/*about draw_utils*/
+void			draw_put_image(t_all *s, void *img_ptr, int x, int y);
+void			draw_tile_again(t_all *s, int pos_y, int pos_x, int dir);
+void			draw_check(t_all *s, int *a, int *visit, int i);
+
+/************about game directory************/
+/*about enemy*/
+void            move_up_enemy(t_all *s, int n);
+void            move_down_enemy(t_all *s, int n);
+void            move_left_enemy(t_all *s, int n);
+void            move_right_enemy(t_all *s, int n);
+
+/*about exit*/
+void            find_exit(t_all *s);
+void            win_exit(t_all *s);
+
+/*about main_loop*/
+int				main_loop(t_all *s);
+void			game_play(t_all *s);
+void			game_end(t_all *s);
+
+/*about enemy2*/
+void            enemy_patrol(t_all *s);
+void            enemy_win(t_all *s);
+
+/*about intro*/
+void			intro(t_all *s);
+
+/*about object*/
+void            object_count(t_all *s);
+void            object_get(t_all *s);
+
+
+/************about init directory************/
 /*about init*/
-void			init_variables(t_all *s);
-void			init_screen(t_all *s, char **argv);
+void			init_parse(t_all *s, char **argv);
+void			init_element(t_all *s);
+void			init_screen(t_all *s);
 void			init_loop(t_all *s);
 void			init_so_long(t_all *s, char** argv);
 
 /*about init2*/
 void            init_enemy(t_all *s);
 void			init_set_enemy(t_all *s, int *n);
+int				check_init_enemy(t_all *s, int *n);
 void			init_set_enemy_var(t_all *s, int i);
 
 /*about init_variable*/
@@ -163,7 +243,6 @@ void			init_player_var(t_all *s);
 void			init_key_var(t_all *s);
 void			init_variable(t_all *s);
 		
-
 /*about tex*/
 void			*tex_input_xpm(t_all *s, char *file);
 void			tex_input(t_all *s);
@@ -171,63 +250,14 @@ void            tex_input_player(t_all *s);
 void            tex_input_enemy(t_all *s);
 void            tex_input_exit(t_all *s);
 
-/*about parse*/
-void			parse_longest_line(t_all *s, char *map);
-int				parse_set_map(t_all *s);
-int				parse_intput_map(t_all *s, char *line, int *j);
-int				parse(t_all *s, char *map);
-
-/*about tool*/
-int				tool_strlen(char* line);
-int             tool_get_digit_count(long int n);
-char            *tool_itoa(int n);
-int             tool_rand(t_all *s);
-void            tool_srand(t_all *s, int seed);
-
-/*about draw_utils*/
-void			draw_put_image(t_all *s, void *img_ptr, int x, int y);
-void			draw_tile_again(t_all *s, int pos_y, int pos_x, int dir);
-void			draw_check(t_all *s, int *a, int *visit, int i);
-
-/*about draw_tiles*/
-void			draw_put_image_tile(t_all *s, int y, int x);
-void			draw_tiles(t_all *s);
-
-/*about draw_character*/
-void			draw_player_tile(t_all *s);
-void            draw_enemy_tile(t_all *s);
-void            draw_player_enemy(t_all *s);
-void            draw_character(t_all *s);
-
-/*about draw_exit*/
-void            draw_exit(t_all *s);
-
-/*about draw_end*/
-void            draw_end(t_all *s);
-void            draw_result(t_all *s);
-
-/*about draw_point*/
-void            draw_point(t_all *s);
-
-/*about set_img*/
-void            set_player_image(t_all *s);
-void            set_enemy_image(t_all *s, int n);
-
-/*about exit*/
-void            find_exit(t_all *s);
-void            win_exit(t_all *s);
-
-/*about intro*/
-void			intro(t_all *s);
-
-/*about object*/
-void            object_count(t_all *s);
-void            object_get(t_all *s);
-
 /*about supplement*/
 int				supplement_set_map(t_all *s);
 void			supplement_input_map(t_all *s);
 
+/*about pos*/
+void			pos_player(t_all *s);
+
+/************about key directory************/
 /*about key*/
 int				key_pressed(int k, t_all *s);
 int				key_released(int k, t_all *s);
@@ -243,21 +273,44 @@ void			key_act_enter(t_all *s);
 /*about key_quit*/
 void            key_act_quit(t_all *s);
 
-/*about pos*/
-void			pos_player(t_all *s);
 
-/*about enemy*/
-void            move_up_enemy(t_all *s, int n);
-void            move_down_enemy(t_all *s, int n);
-void            move_left_enemy(t_all *s, int n);
-void            move_right_enemy(t_all *s, int n);
+/************about parse directory************/
+/*about parse*/
+int				parse_longest_line(t_all *s, char *map);
+int				parse_set_map(t_all *s);
+int				parse_intput_map(t_all *s, char *line, int *j);
+int				parse(t_all *s, char *map);
 
-/*about enemy2*/
-void            enemy_patrol(t_all *s);
-void            enemy_win(t_all *s);
+/*about parse_check_map*/
+int				parse_check_size(t_all *s);
+int				parse_check_boarder(t_all *s);
+int				parse_check_element(t_all *s, char c);
+int				parse_check_space(t_all *s);
+int				parse_check_all(t_all *s);
 
-/*about main_loop*/
-int				main_loop(t_all *s);
-void			game_play(t_all *s);
-void			game_end(t_all *s);
+/*about parse_check_win*/
+void			set_bfs1(t_all *s);
+void			set_bfs2(t_all *s);
+void			set_bfs_x_y(t_all *s);
+int				parse_check_win(t_all *s);
+void			parse_check_bfs(t_all *s);
+
+/************about tool directory************/
+/*about tool*/
+int				tool_strlen(char* line);
+int             tool_get_digit_count(long int n);
+char            *tool_itoa(int n);
+
+/*about random*/
+int             tool_rand(t_all *s);
+void            tool_srand(t_all *s, int seed);
+
+/*about error*/
+
+int				tool_error1(int err);
+int				tool_error2(int err);
+int				tool_error3(int err);
+int				tool_error4(int err);
+int				tool_error(int err);
+
 #endif

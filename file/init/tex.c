@@ -6,7 +6,7 @@
 /*   By: noguen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 00:13:50 by noguen            #+#    #+#             */
-/*   Updated: 2022/01/16 00:33:19 by noguen           ###   ########.fr       */
+/*   Updated: 2022/01/16 23:40:31 by noguen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	*tex_input_xpm(t_all *s, char *file)
 	img = mlx_xpm_file_to_image
 		(s->mlx.ptr, file, &(s->img.width), &(s->img.height));
 	if (img == NULL)
-		printf("error");
+		s->err.n = tool_error(-12);
 	return (img);
 }
 
