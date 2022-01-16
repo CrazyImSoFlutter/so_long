@@ -6,7 +6,7 @@
 /*   By: noguen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 00:11:36 by noguen            #+#    #+#             */
-/*   Updated: 2022/01/17 01:36:48 by noguen           ###   ########.fr       */
+/*   Updated: 2022/01/17 02:14:26 by noguen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 void	init_parse(t_all *s, char **argv)
 {
 	s->err.n = parse(s, argv[1]);
-	//s->err.n = parse_check_all(s);
+	s->err.n = parse_check_all(s);
 	supplement_input_map(s);
-	//s->err.n = parse_check_win(s);
+	s->err.n = parse_check_win(s);
 }
 
 void	init_element(t_all *s)
