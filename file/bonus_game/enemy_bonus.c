@@ -6,7 +6,7 @@
 /*   By: noguen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 23:38:58 by noguen            #+#    #+#             */
-/*   Updated: 2022/01/17 20:53:39 by noguen           ###   ########.fr       */
+/*   Updated: 2022/01/17 18:08:37 by noguen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	move_up_enemy(t_all *s, int n)
 	else
 		s->enemy[n].direction = DOWN;
 	set_enemy_image(s, n);
+	printf("%d %d %d\n", 0, s->enemy[0].pos_y, s->enemy[0].direction);
 }
 
 void	move_down_enemy(t_all *s, int n)

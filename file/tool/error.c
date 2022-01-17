@@ -6,7 +6,7 @@
 /*   By: noguen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 22:41:11 by noguen            #+#    #+#             */
-/*   Updated: 2022/01/17 01:13:54 by noguen           ###   ########.fr       */
+/*   Updated: 2022/01/17 20:43:16 by noguen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 
 int	tool_error1(int err)
 {
-	if (err == -1)
-		printf("Error Code 1 : Invalid argument.\n");
+	if (err == 0)
+		printf("Error Code 0 : Invalid argument.\n");
+	else if (err == -1)
+		printf("Error Code 1 : Invalid filename extension(.ber).\n");
 	else if (err == -2)
 		printf("Error Code 2 : Can't open the file(fd).\n");
 	else if (err == -3)
@@ -41,7 +43,7 @@ int	tool_error2(int err)
 	if (err == -10)
 		printf("Error Code 10 : Map has no movable space.\n");
 	else if (err == -11)
-		printf("Error Code 11 : Player can't win");
+		printf("Error Code 11 : Player can't win.\n");
 	else if (err == -12)
 		printf("Error Code 12 : Invalid texture.\n");
 	exit(0);

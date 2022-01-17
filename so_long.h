@@ -6,7 +6,7 @@
 /*   By: nogeun <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 23:24:35 by nogeun            #+#    #+#             */
-/*   Updated: 2022/01/17 02:01:34 by noguen           ###   ########.fr       */
+/*   Updated: 2022/01/17 20:51:56 by noguen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,8 +108,6 @@ typedef struct		s_player {
 typedef struct      s_enemy {
     int             pos_y;
     int             pos_x;
-    int             pos_map_y;
-    int             pos_map_x;
     int             base_direction;
     int             direction;
     int             move_speed;
@@ -211,7 +209,7 @@ void			game_play(t_all *s);
 void			game_end(t_all *s);
 
 /*about enemy2*/
-void            enemy_patrol(t_all *s);
+void            enemy_patrol(t_all *s, int n);
 void            enemy_win(t_all *s);
 
 /*about intro*/
@@ -272,7 +270,7 @@ void			key_act_enter(t_all *s);
 
 /*about key_quit*/
 void            key_act_quit(t_all *s);
-
+int				key_red_button(t_all *s);
 
 /************about parse directory************/
 /*about parse*/
@@ -294,6 +292,9 @@ void			set_bfs2(t_all *s);
 void			set_bfs_x_y(t_all *s);
 int				parse_check_win(t_all *s);
 void			parse_check_bfs(t_all *s);
+
+/*about check_arguement*/
+void			check_argument(t_all *s, char **argv);
 
 /************about tool directory************/
 /*about tool*/

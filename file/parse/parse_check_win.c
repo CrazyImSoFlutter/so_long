@@ -6,7 +6,7 @@
 /*   By: noguen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 00:02:55 by noguen            #+#    #+#             */
-/*   Updated: 2022/01/17 02:26:19 by noguen           ###   ########.fr       */
+/*   Updated: 2022/01/17 02:37:49 by noguen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,14 +79,6 @@ int	parse_check_win(t_all *s)
 	s->bfs.q[s->bfs.q_size].x = s->bfs.x;
 	s->bfs.q_size++;
 	parse_check_bfs(s);
-	for (int i = 0; i < s->map.y; i++)
-	{
-		for (int j = 0; j < s->map.x; j++)
-		{
-			printf("%d ", s->bfs.visit[i][j]);
-		}
-		printf("\n");
-	}
 	i = -1;
 	while (++i < s->map.y)
 	{
@@ -108,23 +100,17 @@ void	parse_check_bfs(t_all *s)
 	int	y;
 	int	i;
 
-
 	while (s->bfs.index < s->bfs.q_size)
 	{
 		y = s->bfs.q[s->bfs.index].y;
 		x = s->bfs.q[s->bfs.index].x;
-		write(2, tool_itoa(y), tool_strlen(tool_itoa(y)));
-		write(2, " ", 1);
-		write(2, tool_itoa(x), tool_strlen(tool_itoa(x)));
-		write(2, "\n", 1);
 		s->bfs.index++;
 		i = -1;
 		while (++i < 4)
 		{
-
 			if (y + s->bfs.dy[i] < 0 || y + s->bfs.dy[i] >= s->map.y
 				|| x + s->bfs.dx[i] < 0 || x + s->bfs.dx[i] >= s->map.x)
-				break ;
+				continue ;
 			if (s->bfs.visit[y + s->bfs.dy[i]][x + s->bfs.dx[i]] == 0
 				&& s->map.map[y + s->bfs.dy[i]][x + s->bfs.dx[i]] != '1')
 			{
