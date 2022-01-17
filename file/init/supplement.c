@@ -6,11 +6,11 @@
 /*   By: noguen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 00:12:43 by noguen            #+#    #+#             */
-/*   Updated: 2022/01/17 01:42:23 by noguen           ###   ########.fr       */
+/*   Updated: 2022/01/18 00:41:43 by noguen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "include/so_long.h"
 
 int	supplement_set_map(t_all *s)
 {

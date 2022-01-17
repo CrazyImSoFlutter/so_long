@@ -6,11 +6,11 @@
 /*   By: noguen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 23:14:18 by noguen            #+#    #+#             */
-/*   Updated: 2022/01/17 02:10:27 by noguen           ###   ########.fr       */
+/*   Updated: 2022/01/18 00:40:19 by noguen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "include/so_long.h"
 
 void	draw_put_image_tile(t_all *s, int y, int x)
 {
@@ -29,7 +29,7 @@ void	draw_put_image_tile(t_all *s, int y, int x)
 	else if (s->map.sup[y][x] == 'E')
 	{
 		draw_put_image(s, s->tex.sand, y * 64, x * 64);
-		draw_put_image(s, s->tex.exit[s->map.exit_frame / 8], y * 64, x * 64);
+		draw_put_image(s, s->tex.exit, y * 64, x * 64);
 	}
 	else if (s->map.sup[y][x] == 'P')
 		draw_put_image(s, s->tex.sand, y * 64, x * 64);
@@ -39,9 +39,9 @@ void	draw_put_image_tile(t_all *s, int y, int x)
 
 void	draw_tiles(t_all *s)
 {
-	int	i;
-	int	j;
-	char a[2];
+	int		i;
+	int		j;
+	char	a[2];
 
 	i = -1;
 	while (++i < 10)

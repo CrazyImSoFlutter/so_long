@@ -6,11 +6,11 @@
 /*   By: noguen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 23:40:21 by noguen            #+#    #+#             */
-/*   Updated: 2022/01/15 23:46:50 by noguen           ###   ########.fr       */
+/*   Updated: 2022/01/18 00:41:03 by noguen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "include/so_long.h"
 
 void	object_count(t_all *s)
 {

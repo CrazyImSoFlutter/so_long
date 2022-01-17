@@ -6,11 +6,11 @@
 /*   By: noguen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 00:15:40 by noguen            #+#    #+#             */
-/*   Updated: 2022/01/16 00:19:55 by noguen           ###   ########.fr       */
+/*   Updated: 2022/01/18 00:41:39 by noguen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "include/so_long.h"
 
 void	init_win_var(t_all *s)
 {
@@ -28,7 +28,6 @@ void	init_map_var(t_all *s)
 	s->map.map = NULL;
 	s->map.sup = NULL;
 	s->map.exit_flag = 0;
-	s->map.exit_frame = 0;
 	s->object_count = 0;
 }
 
@@ -36,7 +35,6 @@ void	init_player_var(t_all *s)
 {
 	s->player.pos_y = 0;
 	s->player.pos_x = 0;
-	s->player.frame = 1;
 	s->player.move = 0;
 	s->player.win_flag = 0;
 	s->player.direction = 0;
@@ -50,7 +48,6 @@ void	init_key_var(t_all *s)
 	s->key.d = 0;
 	s->key.n = 0;
 	s->key.q = 0;
-	s->key.space = 0;
 }
 
 void	init_variable(t_all *s)

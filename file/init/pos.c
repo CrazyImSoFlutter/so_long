@@ -6,11 +6,11 @@
 /*   By: noguen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 00:13:28 by noguen            #+#    #+#             */
-/*   Updated: 2022/01/17 00:15:11 by noguen           ###   ########.fr       */
+/*   Updated: 2022/01/18 00:41:29 by noguen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "include/so_long.h"
 
 void	pos_player(t_all *s)
 {

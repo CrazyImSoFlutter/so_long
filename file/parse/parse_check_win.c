@@ -6,11 +6,11 @@
 /*   By: noguen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 00:02:55 by noguen            #+#    #+#             */
-/*   Updated: 2022/01/17 02:37:49 by noguen           ###   ########.fr       */
+/*   Updated: 2022/01/18 00:42:43 by noguen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "include/so_long.h"
 
 void	set_bfs1(t_all *s)
 {

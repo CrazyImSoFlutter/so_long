@@ -1,4 +1,5 @@
 NAME = so_long
+NAME_BONUS = so_long_bonus
 
 CC = gcc
 
@@ -11,101 +12,94 @@ LXFLAGS = -Lmlx -lmlx -framework OpenGL -framework Appkit
 HEADER = so_long.h
 
 SRC_PATH = ./file/
+BNS_PATH = ./bonus_file/
+C = .c
+S = _bonus.c
 
-SRC_GNL = get_next_line.c\
-		  get_next_line_utils.c\
+SRC_GNL = get_next_line\
+		  get_next_line_utils\
 
-SRC_DRAW_MAIN = draw_tiles.c\
-		   		draw_exit.c\
-				draw_end.c\
+SRC_DRAW = draw_tiles\
+		   draw_end\
+		   draw_character\
+		   draw_utils\
+		   set_img\
 
-SRC_DRAW = draw_character.c\
-		   draw_point.c\
-		   draw_utils.c\
-		   set_img.c\
+SRC_GAME = intro\
+		   object\
+		   exit\
+		   so_long\
+		   main_loop\
 
-SRC_GAME_MAIN = intro.c\
-				object.c\
-				exit.c\
-				so_long.c\
+SRC_INIT = pos\
+		   supplement\
+		   init_variable\
+		   init\
+		   tex\
 
-SRC_GAME = main_loop.c\
+SRC_KEY = key\
+		  key_act\
+		  key_act_support\
+		  key_quit\
 
-SRC_INIT_MAIN = pos.c\
-				supplement.c\
-				tex.c\
+SRC_PARSE = parse\
+			parse_check_map\
+			parse_check_win\
+			check_argument\
 
-SRC_INIT = init.c\
-		   init2.c\
-		   init_variable.c\
+SRC_TOOL = tool\
+		   random\
+		   error\
 
-SRC_KEY = key.c\
-		  key_act.c\
-		  key_quit.c\
+BNS_DRAW = draw_exit\
+		   draw_point\
 
-SRC_PARSE = parse.c\
-			parse_check_map.c\
-			parse_check_win.c\
-			check_argument.c\
+BNS_GAME = enemy\
+		   enemy2\
 
-SRC_TOOL = tool.c\
-		   random.c\
-		   error.c\
+BNS_INIT = init2\
 
-SRC_DRAW_BONUS = draw_character_bonus.c\
-				 draw_point_bonus.c\
-				 draw_utils_bonus.c\
-				 set_img_bonus.c\
+SRCS = $(addsuffix $(C), $(addprefix gnl/, $(SRC_GNL)))\
+	   $(addsuffix $(C), $(addprefix $(SRC_PATH)draw/, $(SRC_DRAW)))\
+	   $(addsuffix $(C), $(addprefix $(SRC_PATH)game/, $(SRC_GAME)))\
+	   $(addsuffix $(C), $(addprefix $(SRC_PATH)init/, $(SRC_INIT)))\
+	   $(addsuffix $(C), $(addprefix $(SRC_PATH)key/, $(SRC_KEY)))\
+	   $(addsuffix $(C), $(addprefix $(SRC_PATH)tool/, $(SRC_TOOL)))\
+	   $(addsuffix $(C), $(addprefix $(SRC_PATH)parse/, $(SRC_PARSE)))\
 
-SRC_GAME_BONUS = enemy_bonus.c\
-				 enemy2_bonus.c\
-				 main_loop_bonus.c\
+SRCS_BONUS = $(addsuffix $(C), $(addprefix gnl/, $(SRC_GNL)))\
+			 $(addsuffix $(S), $(addprefix $(BNS_PATH)draw/, $(SRC_DRAW)))\
+			 $(addsuffix $(S), $(addprefix $(BNS_PATH)game/, $(SRC_GAME)))\
+			 $(addsuffix $(S), $(addprefix $(BNS_PATH)init/, $(SRC_INIT)))\
+			 $(addsuffix $(S), $(addprefix $(BNS_PATH)key/, $(SRC_KEY)))\
+			 $(addsuffix $(S), $(addprefix $(BNS_PATH)tool/, $(SRC_TOOL)))\
+			 $(addsuffix $(S), $(addprefix $(BNS_PATH)parse/, $(SRC_PARSE)))\
+			 $(addsuffix $(S), $(addprefix $(BNS_PATH)draw/, $(BNS_DRAW)))\
+			 $(addsuffix $(S), $(addprefix $(BNS_PATH)game/, $(BNS_GAME)))\
+			 $(addsuffix $(S), $(addprefix $(BNS_PATH)init/, $(BNS_INIT)))\
 
-SRC_INIT_BONUS = init_bonus.c\
-				 init2_bonus.c\
-				 tex_bonus.c\
-
-SRCS_MANDATORY = $(addprefix gnl/, $(SRC_GNL))\
-				 $(addprefix $(SRC_PATH)draw/, $(SRC_DRAW_MAIN))\
-				 $(addprefix $(SRC_PATH)draw/, $(SRC_DRAW))\
-				 $(addprefix $(SRC_PATH)game/, $(SRC_GAME_MAIN))\
-				 $(addprefix $(SRC_PATH)game/, $(SRC_GAME))\
-				 $(addprefix $(SRC_PATH)init/, $(SRC_INIT_MAIN))\
-				 $(addprefix $(SRC_PATH)init/, $(SRC_INIT))\
-				 $(addprefix $(SRC_PATH)key/, $(SRC_KEY))\
-				 $(addprefix $(SRC_PATH)tool/, $(SRC_TOOL))\
-				 $(addprefix $(SRC_PATH)parse/, $(SRC_PARSE))\
-
-SRCS_BONUS = $(addprefix gnl/, $(SRC_GNL))\
-			 $(addprefix $(SRC_PATH)draw/, $(SRC_DRAW_MAIN))\
-			 $(addprefix $(SRC_PATH)bonus_draw/, $(SRC_DRAW_BONUS))\
-			 $(addprefix $(SRC_PATH)game/, $(SRC_GAME_MAIN))\
-			 $(addprefix $(SRC_PATH)bonus_game/, $(SRC_GAME_BONUS))\
-			 $(addprefix $(SRC_PATH)init/, $(SRC_INIT_MAIN))\
-			 $(addprefix $(SRC_PATH)bonus_init/, $(SRC_INIT_BONUS))\
-			 $(addprefix $(SRC_PATH)key/, $(SRC_KEY))\
-			 $(addprefix $(SRC_PATH)tool/, $(SRC_TOOL))\
-			 $(addprefix $(SRC_PATH)parse/, $(SRC_PARSE))\
-
-OBJS_MANDATORY = $(SRCS_MANDATORY:.c=.o)
+OBJS = $(SRCS:.c=.o)
 OBJS_BONUS = $(SRCS_BONUS:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(MLX) $(OBJS_MANDATORY)
-		$(CC) $(CFLAGS) -g -o $(NAME) $(OBJS_MANDATORY) $(LXFLAGS)
+$(NAME): $(MLX) $(OBJS)
+		$(CC) $(CFLAGS) -g -o $(NAME) $(OBJS) $(LXFLAGS)
 
 $(MLX):
 		@$(MAKE) -C mlx
 
-bonus: $(MLX) $(OBJS_BONUS)
-		$(CC) $(CFLAGS) -g -o $(NAME) $(OBJS_BONUS) $(LXFLAGS)
-
 clean:
-	rm -rf $(OBJS_MANDATORY)
+	rm -rf $(OBJS)
 	rm -rf $(OBJS_BONUS)
 
 fclean:		clean
 				rm -rf $(NAME)
+				rm -rf $(NAME_BONUS)
 
 re: fclean all
+
+bonus: $(NAME_BONUS)
+	
+$(NAME_BONUS): $(MLX) $(OBJS_BONUS)
+			$(CC) $(CFLAGS) -g -o $(NAME_BONUS) $(OBJS_BONUS) $(LXFLAGS)

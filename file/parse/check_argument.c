@@ -6,11 +6,11 @@
 /*   By: noguen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 20:33:32 by noguen            #+#    #+#             */
-/*   Updated: 2022/01/17 20:52:44 by noguen           ###   ########.fr       */
+/*   Updated: 2022/01/18 00:42:23 by noguen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "include/so_long.h"
 
 void	check_argument(t_all *s, char **argv)
 {

@@ -6,11 +6,11 @@
 /*   By: noguen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 22:41:11 by noguen            #+#    #+#             */
-/*   Updated: 2022/01/17 20:43:16 by noguen           ###   ########.fr       */
+/*   Updated: 2022/01/18 00:43:00 by noguen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "include/so_long.h"
 
 int	tool_error1(int err)
 {
@@ -77,22 +77,13 @@ int	tool_error3(int err)
 	return (-1);
 }
 
-int tool_error4(int err)
-{
-	if (err == -30)
-		printf("Error Code 30 : Can't init enemy.\n");
-	exit(0);
-	return (-1);
-}
-
 int	tool_error(int err)
 {
 	if (err > -10)
-		return tool_error1(err);
+		return (tool_error1(err));
 	else if (err > -15)
-		return tool_error2(err);
+		return (tool_error2(err));
 	else if (err > -30)
-		return tool_error3(err);
-	else
-		return tool_error4(err);
+		return (tool_error3(err));
+	return (1);
 }

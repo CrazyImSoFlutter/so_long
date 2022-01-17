@@ -6,38 +6,21 @@
 /*   By: noguen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 00:34:58 by noguen            #+#    #+#             */
-/*   Updated: 2022/01/16 00:37:12 by noguen           ###   ########.fr       */
+/*   Updated: 2022/01/18 00:42:00 by noguen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "include/so_long.h"
 
 void	key_act_up(t_all *s)
 {
 	int		i;
 	int		j;
-	int		precise_i;
-	int		precise_j;
 
 	i = (s->player.pos_y - 10 - P_MOVE_SPEED) / 64;
 	j = s->player.pos_x / 64;
 	if (s->key.w == 1 && s->key.a == 0 && s->key.d == 0 && s->key.s == 0)
-	{
-		s->player.frame = (s->player.frame + 1) % 32;
-		if (s->map.sup[i][j] != '1')
-			s->player.pos_y -= P_MOVE_SPEED;
-		precise_i = s->player.pos_y / 64;
-		precise_j = s->player.pos_x / 64;
-		if (s->player.pos_map_y != precise_i
-			|| s->player.pos_map_x != precise_j)
-		{
-			s->player.move++;
-			printf("player_move: %d\n", s->player.move);
-			s->player.pos_map_y = precise_i;
-			s->player.pos_map_x = precise_j;
-		}
-		set_player_image(s);
-	}
+		key_act_support_y(s, -1, i, j);
 	else if (s->key.w == 1 && s->key.s == 0)
 		if (s->map.sup[i][j] != '1')
 			s->player.pos_y -= P_MOVE_SPEED;
@@ -47,28 +30,13 @@ void	key_act_left(t_all *s)
 {
 	int	i;
 	int	j;
-	int	precise_i;
-	int	precise_j;
 
 	i = s->player.pos_y / 64;
 	j = (s->player.pos_x - 10 - P_MOVE_SPEED) / 64;
 	if (s->key.a == 1 && s->key.d == 0)
 	{
 		s->player.direction = 0;
-		s->player.frame = (s->player.frame + 1) % 32;
-		if (s->map.sup[i][j] != '1')
-			s->player.pos_x -= P_MOVE_SPEED;
-		precise_i = s->player.pos_y / 64;
-		precise_j = s->player.pos_x / 64;
-		if (s->player.pos_map_y != precise_i
-			|| s->player.pos_map_x != precise_j)
-		{
-			s->player.move++;
-			printf("player_move: %d\n", s->player.move);
-			s->player.pos_map_y = precise_i;
-			s->player.pos_map_x = precise_j;
-		}
-		set_player_image(s);
+		key_act_support_x(s, -1, i, j);
 	}
 }
 
@@ -76,28 +44,11 @@ void	key_act_down(t_all *s)
 {
 	int		i;
 	int		j;
-	int		precise_i;
-	int		precise_j;
 
 	i = (s->player.pos_y + 10 + P_MOVE_SPEED) / 64;
 	j = s->player.pos_x / 64;
 	if (s->key.w == 0 && s->key.a == 0 && s->key.d == 0 && s->key.s == 1)
-	{
-		s->player.frame = (s->player.frame + 1) % 32;
-		if (s->map.sup[i][j] != '1')
-			s->player.pos_y += P_MOVE_SPEED;
-		precise_i = s->player.pos_y / 64;
-		precise_j = s->player.pos_x / 64;
-		if (s->player.pos_map_y != precise_i
-			|| s->player.pos_map_x != precise_j)
-		{
-			s->player.move++;
-			printf("player_move: %d\n", s->player.move);
-			s->player.pos_map_y = precise_i;
-			s->player.pos_map_x = precise_j;
-		}
-		set_player_image(s);
-	}
+		key_act_support_y(s, 1, i, j);
 	else if (s->key.w == 0 && s->key.s == 1)
 	{
 		if (s->map.sup[i][j] != '1')
@@ -109,28 +60,13 @@ void	key_act_right(t_all *s)
 {
 	int		i;
 	int		j;
-	int		precise_i;
-	int		precise_j;
 
 	i = s->player.pos_y / 64;
 	j = (s->player.pos_x + 10 + P_MOVE_SPEED) / 64;
 	if (s->key.d == 1)
 	{
 		s->player.direction = 1;
-		s->player.frame = (s->player.frame + 1) % 32;
-		if (s->map.sup[i][j] != '1')
-			s->player.pos_x += P_MOVE_SPEED;
-		precise_i = s->player.pos_y / 64;
-		precise_j = s->player.pos_x / 64;
-		if (s->player.pos_map_y != precise_i
-			|| s->player.pos_map_x != precise_j)
-		{
-			s->player.move++;
-			printf("player_move: %d\n", s->player.move);
-			s->player.pos_map_y = precise_i;
-			s->player.pos_map_x = precise_j;
-		}
-		set_player_image(s);
+		key_act_support_x(s, 1, i, j);
 	}
 }
 

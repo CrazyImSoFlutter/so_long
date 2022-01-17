@@ -1,0 +1,26 @@
+Process:         so_long [44749]
+Path:            /Users/USER/*/so_long
+Load Address:    0x102120000
+Identifier:      so_long
+Version:         ???
+Code Type:       ARM64
+Platform:        macOS
+Parent Process:  zsh [98547]
+
+Date/Time:       2022-01-18 01:04:31.597 +0900
+Launch Time:     2022-01-18 01:04:22.572 +0900
+OS Version:      macOS 12.1 (21C52)
+Report Version:  7
+Analysis Tool:   /Applications/Xcode.app/Contents/Developer/usr/bin/leaks
+Analysis Tool Version:  Xcode 13.2.1 (13C100)
+
+Physical footprint:         139.7M
+Physical footprint (peak):  142.4M
+----
+
+leaks Report Version: 4.0
+Process 44749: 23099 nodes malloced for 26575 KB
+Process 44749: 1 leak for 16 total leaked bytes.
+
+    1 (16 bytes) ROOT LEAK: 0x6000017acf80 [16]
+

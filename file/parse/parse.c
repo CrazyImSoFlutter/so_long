@@ -6,13 +6,13 @@
 /*   By: noguen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 00:12:49 by noguen            #+#    #+#             */
-/*   Updated: 2022/01/16 23:03:56 by noguen           ###   ########.fr       */
+/*   Updated: 2022/01/18 00:42:28 by noguen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "include/so_long.h"
 
-int parse_longest_line(t_all *s, char *map)
+int	parse_longest_line(t_all *s, char *map)
 {
 	char	*line;
 	int		fd;

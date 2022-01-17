@@ -6,18 +6,16 @@
 /*   By: noguen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 00:34:38 by noguen            #+#    #+#             */
-/*   Updated: 2022/01/17 20:52:11 by noguen           ###   ########.fr       */
+/*   Updated: 2022/01/18 00:42:12 by noguen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "include/so_long.h"
 
 void	key_act_quit(t_all *s)
 {
 	if (s->key.q == 1)
-	{
 		exit(0);
-	}
 }
 
 int	key_red_button(t_all *s)

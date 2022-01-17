@@ -6,11 +6,11 @@
 /*   By: noguen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 00:38:28 by noguen            #+#    #+#             */
-/*   Updated: 2022/01/16 00:40:51 by noguen           ###   ########.fr       */
+/*   Updated: 2022/01/18 00:43:04 by noguen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "include/so_long.h"
 
 void	tool_srand(t_all *s, int seed)
 {

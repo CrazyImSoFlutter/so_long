@@ -6,11 +6,11 @@
 /*   By: noguen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 22:18:20 by noguen            #+#    #+#             */
-/*   Updated: 2022/01/17 01:19:06 by noguen           ###   ########.fr       */
+/*   Updated: 2022/01/18 00:42:35 by noguen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "include/so_long.h"
 
 int	parse_check_size(t_all *s)
 {

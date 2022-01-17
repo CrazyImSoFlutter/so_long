@@ -6,11 +6,11 @@
 /*   By: noguen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 00:39:02 by noguen            #+#    #+#             */
-/*   Updated: 2022/01/16 00:40:31 by noguen           ###   ########.fr       */
+/*   Updated: 2022/01/18 00:43:08 by noguen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "include/so_long.h"
 
 int	tool_strlen(char *line)
 {
@@ -68,4 +68,10 @@ char	*tool_itoa(int n)
 		digit_count--;
 	}
 	return (str);
+}
+
+void	support_itoa(char *str, long int *long_n)
+{
+	str[0] = '-';
+	(*long_n) *= -1;
 }

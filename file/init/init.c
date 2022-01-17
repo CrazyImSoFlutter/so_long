@@ -6,11 +6,11 @@
 /*   By: noguen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 00:11:36 by noguen            #+#    #+#             */
-/*   Updated: 2022/01/17 20:51:33 by noguen           ###   ########.fr       */
+/*   Updated: 2022/01/18 00:41:24 by noguen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "include/so_long.h"
 
 void	init_parse(t_all *s, char **argv)
 {
@@ -26,8 +26,7 @@ void	init_element(t_all *s)
 	tex_input(s);
 	object_count(s);
 	find_exit(s);
-	init_enemy(s);
-	s->player.img = s->tex.player_left[0];
+	s->player.img = s->tex.player_left;
 }
 
 void	init_screen(t_all *s)

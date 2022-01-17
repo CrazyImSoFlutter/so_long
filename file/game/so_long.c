@@ -6,11 +6,11 @@
 /*   By: noguen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 23:41:58 by noguen            #+#    #+#             */
-/*   Updated: 2022/01/17 20:49:41 by noguen           ###   ########.fr       */
+/*   Updated: 2022/01/18 00:41:13 by noguen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "include/so_long.h"
 
 int	main(int argc, char **argv)
 {
