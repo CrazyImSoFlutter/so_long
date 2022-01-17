@@ -6,7 +6,7 @@
 /*   By: noguen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 00:39:02 by noguen            #+#    #+#             */
-/*   Updated: 2022/01/18 00:43:08 by noguen           ###   ########.fr       */
+/*   Updated: 2022/01/18 01:54:12 by noguen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,7 @@ char	*tool_itoa(int n)
 		return (NULL);
 	str[0] = '0';
 	if (long_n < 0)
-	{
-		str[0] = '-';
-		long_n *= -1;
-	}
+		support_itoa(str, &long_n);
 	str[digit_count] = '\0';
 	while (((digit_count >= 0 && str[0] != '-')
 			|| (digit_count > 0 && str[0] == '-')) && long_n != 0)
@@ -74,4 +71,14 @@ void	support_itoa(char *str, long int *long_n)
 {
 	str[0] = '-';
 	(*long_n) *= -1;
+}
+
+void	free_map(t_all *s)
+{
+	int	i;
+
+	i = -1;
+	while (++i < s->map.y)
+		free(s->map.map[i]);
+	free(s->map.map);
 }

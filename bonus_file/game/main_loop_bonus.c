@@ -6,7 +6,7 @@
 /*   By: noguen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 00:21:09 by noguen            #+#    #+#             */
-/*   Updated: 2022/01/18 01:11:35 by noguen           ###   ########.fr       */
+/*   Updated: 2022/01/18 01:53:18 by noguen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,7 @@ int	main_loop(t_all *s)
 
 void	game_play(t_all *s)
 {
-
 	draw_character(s);
-
 	enemy_patrol(s, 0);
 	enemy_patrol(s, 1);
 	enemy_patrol(s, 2);

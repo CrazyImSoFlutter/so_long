@@ -6,7 +6,7 @@
 /*   By: noguen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 23:14:38 by noguen            #+#    #+#             */
-/*   Updated: 2022/01/18 01:22:34 by noguen           ###   ########.fr       */
+/*   Updated: 2022/01/18 01:47:47 by noguen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -233,6 +233,7 @@ int				key_red_button(t_all *s);
 /************about parse directory************/
 /*about parse*/
 int				parse_longest_line(t_all *s, char *map);
+int				parse_support(t_all *s, int fd, int *ret);
 int				parse_set_map(t_all *s);
 int				parse_intput_map(t_all *s, char *line, int *j);
 int				parse(t_all *s, char *map);
@@ -260,6 +261,7 @@ int				tool_strlen(char *line);
 int				tool_get_digit_count(long int n);
 char			*tool_itoa(int n);
 void			support_itoa(char *str, long int *long_n);
+void			free_map(t_all *s);
 
 /*about random*/
 int				tool_rand(t_all *s);

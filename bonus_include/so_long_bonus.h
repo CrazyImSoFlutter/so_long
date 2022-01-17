@@ -6,7 +6,7 @@
 /*   By: noguen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 23:19:27 by noguen            #+#    #+#             */
-/*   Updated: 2022/01/18 00:50:43 by noguen           ###   ########.fr       */
+/*   Updated: 2022/01/18 01:48:12 by noguen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -278,6 +278,7 @@ int				key_red_button(t_all *s);
 /************about parse directory************/
 /*about parse*/
 int				parse_longest_line(t_all *s, char *map);
+int				parse_support(t_all *s, int fd, int *ret);
 int				parse_set_map(t_all *s);
 int				parse_intput_map(t_all *s, char *line, int *j);
 int				parse(t_all *s, char *map);

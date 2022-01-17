@@ -6,7 +6,7 @@
 /*   By: noguen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 00:12:49 by noguen            #+#    #+#             */
-/*   Updated: 2022/01/18 00:42:28 by noguen           ###   ########.fr       */
+/*   Updated: 2022/01/18 01:52:47 by noguen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	parse_longest_line(t_all *s, char *map)
 {
-	char	*line;
 	int		fd;
 	int		ret;
 	int		tmp;
@@ -25,19 +24,33 @@ int	parse_longest_line(t_all *s, char *map)
 		return (tool_error(-2));
 	while (ret == 1)
 	{
-		ret = get_next_line(fd, &line);
-		if (ret == -1)
-			return (tool_error(-3));
-		if (line[0] == '1')
-			tmp = tool_strlen(line);
-		else
+		tmp = parse_support(s, fd, &ret);
+		if (tmp == -1)
 			break ;
-		s->map.y++;
-		if (s->map.x <= tmp)
-			s->map.x = tmp;
-		free(line);
 	}
 	close(fd);
+	return (1);
+}
+
+int	parse_support(t_all *s, int fd, int *ret)
+{
+	char	*line;
+	int		tmp;
+
+	*ret = get_next_line(fd, &line);
+	if (*ret == -1)
+		return (tool_error(-3));
+	if (line[0] == '1')
+		tmp = tool_strlen(line);
+	else
+	{
+		free(line);
+		return (-1);
+	}
+	s->map.y++;
+	if (s->map.x <= tmp)
+		s->map.x = tmp;
+	free(line);
 	return (1);
 }
 
