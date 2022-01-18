@@ -6,7 +6,7 @@
 /*   By: noguen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 23:39:21 by noguen            #+#    #+#             */
-/*   Updated: 2022/01/18 00:40:47 by noguen           ###   ########.fr       */
+/*   Updated: 2022/01/18 13:25:09 by noguen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	win_exit(t_all *s)
 		j = -1;
 		while (++j < 2)
 		{
-			if (s->map.sup[y[i]][x[j]] == 'E')
+			if (s->map.sup[y[i]][x[j]] == 'E' && s->object_count == 0)
 			{
 				s->player.win_flag = 1;
 				s->win.frame = 0;

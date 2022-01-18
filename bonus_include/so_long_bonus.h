@@ -6,7 +6,7 @@
 /*   By: noguen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 23:19:27 by noguen            #+#    #+#             */
-/*   Updated: 2022/01/18 01:48:12 by noguen           ###   ########.fr       */
+/*   Updated: 2022/01/18 13:27:15 by noguen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -285,7 +285,7 @@ int				parse(t_all *s, char *map);
 
 /*about parse_check_map*/
 int				parse_check_size(t_all *s);
-int				parse_check_boarder(t_all *s);
+int				parse_check_border(t_all *s);
 int				parse_check_element(t_all *s, char c);
 int				parse_check_space(t_all *s);
 int				parse_check_all(t_all *s);
