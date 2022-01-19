@@ -6,7 +6,7 @@
 /*   By: noguen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 23:19:27 by noguen            #+#    #+#             */
-/*   Updated: 2022/01/19 15:33:21 by noguen           ###   ########.fr       */
+/*   Updated: 2022/01/19 16:38:47 by hnoh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -292,6 +292,7 @@ int				parse_check_all(t_all *s);
 
 /*about parse_check_map2*/
 int				parse_check_mulitple(t_all *s, char c);
+int				parse_check_character(t_all *s);
 void			parse_check_multiple_all(t_all *s);
 
 /*about parse_check_win*/

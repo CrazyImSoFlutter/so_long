@@ -6,7 +6,7 @@
 /*   By: noguen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 15:28:12 by noguen            #+#    #+#             */
-/*   Updated: 2022/01/19 15:41:03 by noguen           ###   ########.fr       */
+/*   Updated: 2022/01/19 16:40:59 by hnoh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,30 @@ int	parse_check_multiple(t_all *s, char c)
 		return (tool_error(-13));
 	if (count != 1 && c == 'E')
 		return (tool_error(-14));
+	return (1);
+}
+
+int	parse_check_character(t_all *s)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	while (++i < s->map.y)
+	{
+		j = -1;
+		while (++j < s->map.x)
+		{
+			if (s->map.map[i][j] == '1'
+				|| s->map.map[i][j] == '0'
+				|| s->map.map[i][j] == 'E'
+				|| s->map.map[i][j] == 'C'
+				|| s->map.map[i][j] == 'P')
+				continue ;
+			else
+				return (tool_error(-18));
+		}
+	}
 	return (1);
 }
 

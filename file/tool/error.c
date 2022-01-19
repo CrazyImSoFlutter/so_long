@@ -6,7 +6,7 @@
 /*   By: noguen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 22:41:11 by noguen            #+#    #+#             */
-/*   Updated: 2022/01/19 15:23:06 by noguen           ###   ########.fr       */
+/*   Updated: 2022/01/19 16:36:40 by hnoh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ int	tool_error3(int err)
 		printf("Error Code 8 : Map has no collectable thing.\n");
 		printf("Error Code 9 : Map has no player\n");
 	}
+	else if (err == -18)
+		printf("Error Code -18 : Wrong character.\n");
 	else if (err == -24)
 	{
 		printf("Error Code 7 : Map has no exit.\n");

@@ -6,7 +6,7 @@
 /*   By: noguen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 22:18:20 by noguen            #+#    #+#             */
-/*   Updated: 2022/01/19 15:36:49 by noguen           ###   ########.fr       */
+/*   Updated: 2022/01/19 16:39:33 by hnoh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ int	parse_check_all(t_all *s)
 	err = 0;
 	s->err.n = parse_check_size(s);
 	s->err.n = parse_check_border(s);
+	s->err.n = parse_check_character(s);
 	err += parse_check_element(s, 'E');
 	err += parse_check_element(s, 'C');
 	err += parse_check_element(s, 'P');
