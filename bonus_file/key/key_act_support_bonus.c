@@ -6,7 +6,7 @@
 /*   By: noguen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 00:12:44 by noguen            #+#    #+#             */
-/*   Updated: 2022/01/18 00:48:14 by noguen           ###   ########.fr       */
+/*   Updated: 2022/01/19 15:40:16 by noguen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	key_act_support_y(t_all *s, int op, int i, int j)
 		|| s->player.pos_map_x != precise_j)
 	{
 		s->player.move++;
-		printf("player_move: %d\n", s->player.move);
 		s->player.pos_map_y = precise_i;
 		s->player.pos_map_x = precise_j;
 	}
@@ -47,7 +46,6 @@ void	key_act_support_x(t_all *s, int op, int i, int j)
 		|| s->player.pos_map_x != precise_j)
 	{
 		s->player.move++;
-		printf("player_move: %d\n", s->player.move);
 		s->player.pos_map_y = precise_i;
 		s->player.pos_map_x = precise_j;
 	}

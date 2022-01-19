@@ -6,7 +6,7 @@
 /*   By: noguen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 23:14:38 by noguen            #+#    #+#             */
-/*   Updated: 2022/01/18 13:26:25 by noguen           ###   ########.fr       */
+/*   Updated: 2022/01/19 15:32:43 by noguen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -244,6 +244,10 @@ int				parse_check_border(t_all *s);
 int				parse_check_element(t_all *s, char c);
 int				parse_check_space(t_all *s);
 int				parse_check_all(t_all *s);
+
+/*about parse_check_map2*/
+int				parse_check_mulitple(t_all *s, char c);
+void			parse_check_multiple_all(t_all *s);
 
 /*about parse_check_win*/
 void			set_bfs1(t_all *s);

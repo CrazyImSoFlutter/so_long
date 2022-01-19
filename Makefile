@@ -44,6 +44,7 @@ SRC_KEY = key\
 
 SRC_PARSE = parse\
 			parse_check_map\
+			parse_check_map2\
 			parse_check_win\
 			check_argument\
 

@@ -6,7 +6,7 @@
 /*   By: noguen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 22:41:11 by noguen            #+#    #+#             */
-/*   Updated: 2022/01/18 00:48:56 by noguen           ###   ########.fr       */
+/*   Updated: 2022/01/19 15:27:16 by noguen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,10 @@ int	tool_error2(int err)
 		printf("Error Code 11 : Player can't win.\n");
 	else if (err == -12)
 		printf("Error Code 12 : Invalid texture.\n");
+	else if (err == -13)
+		printf("Error Code 13 : Multiple player pos.\n");
+	else if (err == -14)
+		printf("Error Code 14 : Multiple exit.\n");
 	exit(0);
 	return (-1);
 }

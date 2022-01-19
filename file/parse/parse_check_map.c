@@ -6,7 +6,7 @@
 /*   By: noguen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 22:18:20 by noguen            #+#    #+#             */
-/*   Updated: 2022/01/18 13:26:58 by noguen           ###   ########.fr       */
+/*   Updated: 2022/01/19 15:36:27 by noguen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ int	parse_check_all(t_all *s)
 	err += parse_check_element(s, 'P');
 	if (err != 0)
 		return (tool_error(err));
+	parse_check_multiple_all(s);
 	s->err.n = parse_check_space(s);
 	return (1);
 }
