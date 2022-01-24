@@ -24,6 +24,10 @@ Get all collective objects and go to exit.
 
 1. clone this repository first
 
+```shell
+$ git clone git@github.com:NOGUEN/so_long.git
+```
+
 2. run makefile with bonus
 
 ```shell
