@@ -1,4 +1,4 @@
-# so_long
+# Simple Top View Game
 
 ## project
 
